@@ -1,0 +1,49 @@
+name: 套用審核結果
+
+# 由儀表板（GitHub Pages 模式）按下「送出」時以 workflow_dispatch 觸發
+on:
+  workflow_dispatch:
+    inputs:
+      ops:
+        description: "審核操作 JSON 陣列（由儀表板產生）"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: newsfetch-data
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: 套用審核操作
+        id: apply
+        env:
+          OPS: ${{ github.event.inputs.ops }}
+        run: |
+          printf '%s' "$OPS" > "$RUNNER_TEMP/ops.json"
+          set +e
+          python apply_review.py --file "$RUNNER_TEMP/ops.json" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "status=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: Commit 資料
+        run: bash scripts/commit_data.sh "套用審核結果 $(TZ=Asia/Taipei date '+%F %H:%M')"
+
+      - name: 回報失敗的操作
+        if: steps.apply.outputs.status != '0'
+        run: |
+          echo "部分審核操作失敗（例如手動新增的連結無法抓取），詳見上方輸出與 logs/review-*.log" >&2
+          exit 1

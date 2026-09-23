@@ -1,0 +1,47 @@
+name: 每日爬蟲
+
+on:
+  schedule:
+    # 台灣時間每天 07:00（UTC 前一天 23:00）；GitHub cron 可能延遲數分鐘到數十分鐘
+    - cron: "0 23 * * *"
+  workflow_dispatch:
+    inputs:
+      terms:
+        description: "只搜尋指定關鍵字（空白分隔，留空＝全部）"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+# 與審核套用、報告生成共用同一組，避免同時寫入資料庫造成 push 衝突
+concurrency:
+  group: newsfetch-data
+  cancel-in-progress: false
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: 執行爬蟲
+        env:
+          TERMS: ${{ github.event.inputs.terms }}
+        run: |
+          if [ -n "$TERMS" ]; then
+            python run_daily.py --terms $TERMS
+          else
+            python run_daily.py
+          fi
+
+      - name: Commit 資料與執行報告
+        run: bash scripts/commit_data.sh "每日爬蟲 $(TZ=Asia/Taipei date +%F)"

@@ -1,0 +1,66 @@
+name: 月度／趨勢報告
+
+on:
+  schedule:
+    # 每月 1 日台灣時間 08:00 產生上個月的月度重點報告
+    - cron: "0 0 1 * *"
+    # 每年 1、4、7、10 月 2 日台灣時間 08:00 更新趨勢報告（等月度報告先完成）
+    - cron: "0 0 2 1,4,7,10 *"
+  workflow_dispatch:
+    inputs:
+      kind:
+        description: "monthly 或 trend"
+        required: true
+        default: monthly
+        type: choice
+        options: [monthly, trend]
+      month:
+        description: "月度報告月份 YYYYMM（留空＝上個月）"
+        required: false
+        default: ""
+      topic:
+        description: "只重新生成單一議題（留空＝全部）"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: newsfetch-data
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: 生成報告
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          EVENT: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+          KIND: ${{ github.event.inputs.kind }}
+          MONTH: ${{ github.event.inputs.month }}
+          TOPIC: ${{ github.event.inputs.topic }}
+        run: |
+          if [ "$EVENT" = "schedule" ]; then
+            if [ "$SCHEDULE" = "0 0 1 * *" ]; then KIND=monthly; else KIND=trend; fi
+          fi
+          args=("$KIND")
+          [ -n "$MONTH" ] && [ "$KIND" = monthly ] && args+=(--month "$MONTH")
+          [ -n "$TOPIC" ] && args+=(--topic "$TOPIC")
+          python generate_reports.py "${args[@]}"
+
+      - name: Commit 報告
+        if: always()
+        run: bash scripts/commit_data.sh "更新月度／趨勢報告 $(TZ=Asia/Taipei date +%F)"
