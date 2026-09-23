@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>金融政策新聞儀表板 — 設計預覽</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600&family=Noto+Sans+TC:wght@400;500;600&display=swap');
+
+  :root{
+    --bg-page: #F3EEE4;       /* 米杏色主背景 */
+    --bg-panel: #EAE2D2;      /* 淺沙色次要區塊 */
+    --bg-panel-deep: #E3D9C4; /* 稍深沙色，用於待確認區塊 */
+    --accent: #A9683F;        /* 赭褐強調色 */
+    --accent-deep: #7C4B2A;   /* 深赭褐，用於選中狀態文字 */
+    --text-main: #3A2E22;     /* espresso 炭褐 */
+    --text-sub: #7D7263;      /* 次要文字 */
+    --text-muted: #A69C8C;    /* 弱化文字 */
+    --divider: #D8CDB8;       /* 暖灰分隔線 */
+
+    --topic-1: #A9683F; /* 亞洲資產管理中心 */
+    --topic-2: #8C7A4E; /* 國際級資本市場 */
+    --topic-3: #B08968; /* 三軌金融 */
+    --topic-4: #9C7350; /* 全齡金融 */
+    --topic-5: #7C5C3E; /* 信任金融 */
+    --topic-6: #C08552; /* 金融大回饋 */
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #cfc6b4;
+    font-family: 'Noto Sans TC', sans-serif;
+    padding: 40px 20px;
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .phone {
+    width: 390px;
+    height: 844px;
+    background: var(--bg-page);
+    border-radius: 36px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .phone-label {
+    text-align: center;
+    color: #5c5346;
+    font-size: 13px;
+    margin-bottom: 12px;
+    font-family: 'Noto Sans TC', sans-serif;
+    letter-spacing: 0.5px;
+  }
+  .phone-wrap { display: flex; flex-direction: column; align-items: center; }
+
+  /* ---------- Header ---------- */
+  .header {
+    padding: 22px 22px 14px;
+    background: var(--bg-page);
+  }
+
+  /* ===== 站名標題：直式小標＋橫排大標 ===== */
+  .brand-c { margin-bottom: 22px; display: flex; align-items: center; gap: 14px; }
+  .brand-c .vert {
+    writing-mode: vertical-rl;
+    font-size: 9px;
+    color: var(--text-sub);
+    letter-spacing: 1.5px;
+    line-height: 1.6;
+    border-right: 1px solid var(--divider);
+    padding-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .brand-c .name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--text-main);
+    letter-spacing: 3px;
+    line-height: 1.2;
+    margin: 0;
+    white-space: nowrap;
+  }
+  .brand-c .name em {
+    display: block;
+    font-style: normal;
+    font-size: 10.5px;
+    color: var(--accent-deep);
+    letter-spacing: 2px;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 500;
+    margin-top: 5px;
+  }
+
+  .variant-label {
+    text-align: center;
+    font-size: 11px;
+    color: #8a7f6c;
+    margin: 0 0 10px;
+    letter-spacing: 1px;
+  }
+
+  /* ---------- Bottom view switch (nav) ---------- */
+  .bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 4px 14px;
+    border-top: 0.5px solid var(--divider);
+    background: var(--bg-page);
+  }
+  .nav-item { text-align:center; font-size: 10.5px; color: var(--text-muted); flex: 1; }
+  .nav-icon { display:block; margin: 0 auto 4px; }
+  .nav-icon svg { width: 20px; height: 20px; display: block; margin: 0 auto; }
+  .nav-item.active { color: var(--accent-deep); font-weight: 600; }
+
+  /* search */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-panel);
+    border-radius: 8px;
+    padding: 9px 12px;
+    margin-bottom: 18px;
+  }
+  .search-bar input {
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    color: var(--text-sub);
+    outline: none;
+    width: 100%;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+  .search-icon { color: var(--text-muted); display:flex; }
+  .search-icon svg { width: 15px; height: 15px; }
+
+  .content { padding: 0 22px 22px; overflow-y: auto; flex: 1; }
+
+  /* ---------- Calendar ---------- */
+  .cal-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .cal-month {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+  .cal-arrow { color: var(--text-sub); font-size: 14px; }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 10px;
+    margin-bottom: 20px;
+  }
+  .cal-dow {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    padding-bottom: 6px;
+  }
+  .cal-day {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-sub);
+    position: relative;
+    padding: 6px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cal-day.dim { color: var(--text-muted); opacity: 0.5; }
+  .cal-day .num { display: flex; align-items:center; justify-content:center; width: 28px; height: 28px; border-radius: 50%; margin: 0 auto; }
+  .cal-day .dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin: 3px auto 0;
+    visibility: hidden;
+  }
+  .cal-day.has-news .dot { visibility: visible; }
+  .cal-day.selected .num {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+  }
+  .cal-day.selected .dot { visibility: hidden; }
+
+  .selected-date-label {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin: 4px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .selected-date-label b { color: var(--text-main); font-weight: 600; }
+
+  /* ---------- News list ---------- */
+  .news-item {
+    padding: 14px 0;
+    border-bottom: 0.5px solid var(--divider);
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    margin-bottom: 6px;
+  }
+  .tag {
+    font-size: 10.5px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .news-source { font-size: 11px; color: var(--text-muted); }
+  .news-dot { color: var(--text-muted); font-size: 10px; }
+  .news-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-main);
+    line-height: 1.55;
+    margin: 0 0 4px;
+    text-decoration: none;
+    display: block;
+  }
+  .news-time { font-size: 11px; color: var(--text-muted); }
+
+  /* topic tag colors */
+  .t1 { background: rgba(169,104,63,0.14); color: var(--topic-1); }
+  .t2 { background: rgba(140,122,78,0.16); color: var(--topic-2); }
+  .t3 { background: rgba(176,137,104,0.18); color: #8c5a35; }
+  .t4 { background: rgba(156,115,80,0.16); color: var(--topic-4); }
+  .t5 { background: rgba(124,92,62,0.16); color: var(--topic-5); }
+  .t6 { background: rgba(192,133,82,0.16); color: #a8642f; }
+
+  /* ---------- Topic tabs (screen 2) ---------- */
+  .topic-tabs {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+    border-bottom: 0.5px solid var(--divider);
+  }
+  .topic-tab {
+    font-size: 13px;
+    color: var(--text-sub);
+    white-space: nowrap;
+    padding-bottom: 8px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .topic-tab.active {
+    color: var(--accent-deep);
+    font-weight: 600;
+  }
+  .topic-tab.active::after {
+    content:'';
+    position:absolute;
+    bottom:-11px; left:0; right:0;
+    height:2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin: 18px 0 8px;
+  }
+
+  .manual-add {
+    background: var(--bg-panel);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+  }
+  .manual-add .ma-label {
+    font-size: 11px;
+    color: var(--accent-deep);
+    font-weight: 600;
+    margin: 0 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .manual-add .ma-label::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .ma-url-input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid var(--divider);
+    background: transparent;
+    outline: none;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    color: var(--text-main);
+    padding: 6px 2px 9px;
+    margin-bottom: 12px;
+  }
+  .ma-url-input::placeholder { color: var(--text-muted); }
+  .ma-row {
+    display: flex;
+    gap: 8px;
+  }
+  .ma-topic-select {
+    flex: 1;
+    border: none;
+    border-bottom: 1px solid var(--divider);
+    background: transparent;
+    outline: none;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 12px;
+    color: var(--text-sub);
+    padding: 6px 2px 8px;
+  }
+  .ma-submit {
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Noto Sans TC', sans-serif;
+    border-radius: 8px;
+    padding: 0 18px;
+    flex-shrink: 0;
+  }
+
+  /* pending review block */
+  .review-mode-banner {
+    background: var(--bg-panel-deep);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+  }
+  .review-mode-banner .banner-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--text-sub);
+    line-height: 1.6;
+  }
+  .review-mode-banner .banner-top b { color: var(--accent-deep); }
+  .banner-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10.5px;
+    color: var(--accent-deep);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-left: 10px;
+  }
+  .banner-toggle svg { width: 11px; height: 11px; }
+  .accuracy-detail {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 0.5px solid var(--divider);
+  }
+  .accuracy-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .accuracy-row:last-child { margin-bottom: 0; }
+  .accuracy-row .topic-name {
+    font-size: 11px;
+    color: var(--text-main);
+    width: 76px;
+    flex-shrink: 0;
+    line-height: 1.4;
+  }
+  .accuracy-bar-track {
+    flex: 1;
+    height: 5px;
+    background: rgba(169,104,63,0.14);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .accuracy-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+  }
+  .accuracy-pct {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent-deep);
+    width: 34px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .accuracy-note {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+  .coverage-block {
+    background: var(--bg-panel);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+  }
+  .coverage-block .cv-label {
+    font-size: 11px;
+    color: var(--accent-deep);
+    font-weight: 600;
+    margin: 0 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .coverage-block .cv-label::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .cv-stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .cv-stat-row .cv-name {
+    font-size: 12px;
+    color: var(--text-main);
+  }
+  .cv-stat-row .cv-value {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+  .cv-stat-row .cv-value em {
+    font-style: normal;
+    color: var(--accent-deep);
+  }
+  .cv-note {
+    font-size: 10.5px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+  .review-card {
+    background: var(--bg-panel);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .review-card .rt {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    margin-bottom: 8px;
+    text-decoration: none;
+  }
+  .review-card .rt svg {
+    width: 12px; height: 12px;
+    flex-shrink: 0;
+    margin-top: 4px;
+    color: var(--accent);
+  }
+  .review-card .src {
+    font-size: 11px;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .topic-suggest-list {
+    margin-bottom: 12px;
+  }
+  .topic-suggest-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--divider);
+  }
+  .topic-suggest-row:last-child { border-bottom: none; }
+  .ts-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .ts-topic {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-main);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .ts-sub {
+    font-size: 11px;
+    color: var(--accent-deep);
+  }
+  .ts-sub.none { color: var(--text-muted); }
+  .ts-reason {
+    font-size: 10px;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 2px;
+  }
+  .ts-actions {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .ts-actions button {
+    border: none;
+    background: transparent;
+    width: 26px; height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+  }
+  .ts-actions button svg { width: 13px; height: 13px; }
+  .ts-actions .ts-accept { color: var(--accent); }
+  .ts-actions .ts-remove:hover { color: var(--accent-deep); }
+  .add-topic-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-top: 8px;
+    font-size: 11.5px;
+    color: var(--text-sub);
+  }
+  .add-topic-row select {
+    border: none;
+    border-bottom: 1px solid var(--divider);
+    background: transparent;
+    outline: none;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 11.5px;
+    color: var(--text-sub);
+    padding: 3px 0;
+  }
+  .add-topic-row .add-btn {
+    color: var(--accent-deep);
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+  .review-actions {
+    display: flex;
+    gap: 8px;
+  }
+  .review-actions button {
+    flex: 1;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 0;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+  .review-actions .approve {
+    background: var(--accent);
+    color: #fff;
+  }
+  .review-actions .edit {
+    background: transparent;
+    border: 1px solid var(--divider);
+    color: var(--text-sub);
+  }
+  .review-actions .delete {
+    background: transparent;
+    border: 1px solid rgba(169,104,63,0.35);
+    color: var(--text-muted);
+    flex: 0 0 auto;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  .review-actions .delete svg { width: 14px; height: 14px; }
+  .confirm-delete {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(169,104,63,0.08);
+    border: 1px solid rgba(169,104,63,0.3);
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+  .confirm-delete .cd-text {
+    font-size: 11.5px;
+    color: var(--text-main);
+    flex: 1;
+  }
+  .confirm-delete .cd-btns {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .confirm-delete button {
+    border: none;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'Noto Sans TC', sans-serif;
+    padding: 6px 12px;
+  }
+  .confirm-delete .cd-yes {
+    background: var(--accent-deep);
+    color: #fff;
+  }
+  .confirm-delete .cd-no {
+    background: transparent;
+    border: 1px solid var(--divider);
+    color: var(--text-sub);
+  }
+  .review-block {
+    background: var(--bg-panel-deep);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-top: 20px;
+  }
+  .review-title {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin: 0 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .review-item {
+    font-size: 12.5px;
+    color: var(--text-sub);
+    padding: 8px 0;
+    border-bottom: 0.5px solid var(--divider);
+  }
+  .review-item:last-child { border: none; padding-bottom: 0; }
+  .review-item .rt { color: var(--text-main); display:block; margin-bottom:3px; }
+  .review-item .suggest { font-size: 11px; color: var(--accent-deep); }
+
+  /* ---------- Topic view: month grouping ---------- */
+  .topic-tabs {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: 6px;
+    border-bottom: 0.5px solid var(--divider);
+  }
+  .topic-tab {
+    font-size: 13px;
+    color: var(--text-sub);
+    white-space: nowrap;
+    padding-bottom: 8px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .topic-tab.active {
+    color: var(--accent-deep);
+    font-weight: 600;
+  }
+  .topic-tab.active::after {
+    content:'';
+    position:absolute;
+    bottom:-11px; left:0; right:0;
+    height:2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .month-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 4px 0 20px;
+  }
+  .month-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .month-input-wrap input {
+    border: none;
+    border-bottom: 1px solid var(--divider);
+    background: transparent;
+    outline: none;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    width: 82px;
+    text-align: center;
+    letter-spacing: 1.5px;
+    padding: 4px 2px 8px;
+  }
+  .month-input-wrap input::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 1px;
+    opacity: 0.7;
+  }
+  .month-input-wrap .go {
+    color: var(--accent-deep);
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .month-input-wrap .go svg { width: 10px; height: 10px; }
+  .month-report {
+    background: var(--bg-panel);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .month-report .subreport { margin-bottom: 14px; }
+  .month-report .subreport:last-child { margin-bottom: 0; }
+  .month-report .rlabel {
+    font-size: 11px;
+    color: var(--accent-deep);
+    font-weight: 600;
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .month-report .rlabel::before {
+    content: '';
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .month-report p {
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--text-main);
+    margin: 0;
+  }
+  .subcat-filter {
+    display: flex;
+    gap: 8px;
+    margin: 14px 0 10px;
+  }
+  .subcat-chip {
+    font-size: 11.5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    color: var(--text-sub);
+    background: var(--bg-panel);
+  }
+  .subcat-chip.active {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+  }
+  .subcat-label {
+    font-size: 10px;
+    color: var(--accent-deep);
+    background: rgba(169,104,63,0.10);
+    padding: 1.5px 7px;
+    border-radius: 10px;
+    margin-right: 2px;
+  }
+  .cross-topic-tag {
+    font-size: 10px;
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .cross-topic-tag svg { width: 10px; height: 10px; }
+  .month-count {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin: 8px 0 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="phone-wrap">
+  <div class="phone-label">依日期 — 日曆檢視</div>
+  <div class="phone">
+    <div class="header">
+      <div class="brand-c">
+        <span class="vert">BANK<br>SINOPAC</span>
+        <p class="name">新聞觀測站<em>金融政策彙整</em></p>
+      </div>
+      <div class="search-bar">
+        <span class="search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5"/><line x1="19" y1="19" x2="14.7" y2="14.7"/></svg></span>
+        <input placeholder="搜尋關鍵字，如：TISA、彭金隆" disabled>
+      </div>
+    </div>
+    <div class="content">
+      <div class="cal-nav">
+        <span class="cal-arrow">‹</span>
+        <span class="cal-month">2026年9月</span>
+        <span class="cal-arrow">›</span>
+      </div>
+      <div class="cal-grid">
+        <div class="cal-dow">日</div><div class="cal-dow">一</div><div class="cal-dow">二</div>
+        <div class="cal-dow">三</div><div class="cal-dow">四</div><div class="cal-dow">五</div><div class="cal-dow">六</div>
+
+        <div class="cal-day dim"><span class="num">30</span><span class="dot"></span></div>
+        <div class="cal-day dim"><span class="num">31</span><span class="dot"></span></div>
+        <div class="cal-day"><span class="num">1</span><span class="dot"></span></div>
+        <div class="cal-day has-news"><span class="num">2</span><span class="dot"></span></div>
+        <div class="cal-day"><span class="num">3</span><span class="dot"></span></div>
+        <div class="cal-day has-news"><span class="num">4</span><span class="dot"></span></div>
+        <div class="cal-day"><span class="num">5</span><span class="dot"></span></div>
+
+        <div class="cal-day"><span class="num">6</span><span class="dot"></span></div>
+        <div class="cal-day"><span class="num">7</span><span class="dot"></span></div>
+        <div class="cal-day has-news"><span class="num">8</span><span class="dot"></span></div>
+        <div class="cal-day"><span class="num">9</span><span class="dot"></span></div>
+        <div class="cal-day has-news"><span class="num">10</span><span class="dot"></span></div>
+        <div class="cal-day has-news"><span class="num">11</span><span class="dot"></span></div>
+        <div class="cal-day"><span class="num">12</span><span class="dot"></span></div>
+
+        <div class="cal-day"><span class="num">13</span><span class="dot"></span></div>
+        <div class="cal-day has-news"><span class="num">14</span><span class="dot"></span></div>
+        <div class="cal-day selected has-news"><span class="num">15</span><span class="dot"></span></div>
+        <div class="cal-day"><span class="num">16</span><span class="dot"></span></div>
+        <div class="cal-day"><span class="num">17</span><span class="dot"></span></div>
+        <div class="cal-day"><span class="num">18</span><span class="dot"></span></div>
+        <div class="cal-day"><span class="num">19</span><span class="dot"></span></div>
+      </div>
+
+      <div class="selected-date-label"><b>9月15日（二）</b>　共 4 則相關新聞</div>
+
+      <div class="news-item">
+        <div class="news-meta">
+          <span class="tag t1">亞洲資產管理中心</span>
+          <span class="tag t2">國際級資本市場</span>
+          <span class="news-source">工商時報</span>
+        </div>
+        <a class="news-title" href="#">亞資高雄專區試辦業務展延　金管會三叮囑</a>
+        <span class="news-time">16:20</span>
+      </div>
+
+      <div class="news-item">
+        <div class="news-meta">
+          <span class="tag t1">亞洲資產管理中心</span>
+          <span class="news-source">工商時報</span>
+        </div>
+        <a class="news-title" href="#">金管會召14金控　擘亞資前景</a>
+        <span class="news-time">14:05</span>
+      </div>
+
+      <div class="news-item">
+        <div class="news-meta">
+          <span class="tag t5">信任金融</span>
+          <span class="news-source">經濟日報</span>
+        </div>
+        <a class="news-title" href="#">彭金隆：信任金融要從口號走進董事會</a>
+        <span class="news-time">10:42</span>
+      </div>
+
+      <div class="news-item">
+        <div class="news-meta">
+          <span class="tag t2">國際級資本市場</span>
+          <span class="news-source">工商時報</span>
+        </div>
+        <a class="news-title" href="#">亞洲掛牌首站　東方匯理進軍台灣ETF</a>
+        <span class="news-time">09:15</span>
+      </div>
+
+    </div>
+    <div class="bottom-nav">
+      <div class="nav-item active"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></span>日期</div>
+      <div class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4h-5.5a1.5 1.5 0 0 0 -1.5 1.5v5.5c0 .4 .15 .78 .44 1.06l8 8c.58 .58 1.53 .58 2.12 0l6-6c.58 -.58 .58 -1.53 0 -2.12l-8 -8c-.28 -.28 -.66 -.44 -1.06 -.44z"/><circle cx="9" cy="9" r="1"/></svg></span>議題</div>
+      <div class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 16 9.5 10.5 13.5 14.5 20 8"/><polyline points="15 8 20 8 20 13"/></svg></span>趨勢</div>
+      <div class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3l8 -8"/><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"/></svg></span>待審核</div>
+    </div>
+  </div>
+</div>
+
+<div class="phone-wrap">
+  <div class="phone-label">依議題 — 月份分組＋重點報告</div>
+  <div class="phone">
+    <div class="header">
+      <div class="brand-c">
+        <span class="vert">BANK<br>SINOPAC</span>
+        <p class="name">新聞觀測站<em>金融政策彙整</em></p>
+      </div>
+    </div>
+    <div class="content">
+      <div class="topic-tabs">
+        <span class="topic-tab active">亞洲資產管理中心</span>
+        <span class="topic-tab">國際級資本市場</span>
+        <span class="topic-tab">三軌金融</span>
+        <span class="topic-tab">全齡金融</span>
+        <span class="topic-tab">信任金融</span>
+        <span class="topic-tab">金融大回饋</span>
+      </div>
+
+      <div class="month-picker">
+        <div class="month-input-wrap">
+          <input type="text" placeholder="YYYYMM" maxlength="6" inputmode="numeric">
+          <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></span>
+        </div>
+      </div>
+
+      <div class="month-block">
+        <div class="month-report">
+          <div class="subreport">
+            <p class="rlabel">政策與法規</p>
+            <p>高雄專區試辦業務宣布展延，金管會同時召集14家金控研議亞資前景，顯示政策重心從「法規鬆綁」階段轉向「地方專區實績檢視」。</p>
+          </div>
+          <div class="subreport">
+            <p class="rlabel">商品與業務</p>
+            <p>台南專區簽署MOU預告亞資布局將擴及南部第二個城市，銀行業者陸續規劃境外資產管理相關商品線，搶進南部客群。</p>
+          </div>
+          <div class="subreport">
+            <p class="rlabel">同業動態</p>
+            <p>多家金控回應金管會邀集研議亞資前景之議程，本月尚無單一業者大型單一動作，以集體參與研議會議為主。</p>
+          </div>
+        </div>
+        <div class="month-count">本月共 6 則相關新聞</div>
+
+        <div class="subcat-filter">
+          <span class="subcat-chip active">全部</span>
+          <span class="subcat-chip">政策與法規</span>
+          <span class="subcat-chip">商品與業務</span>
+          <span class="subcat-chip">同業動態</span>
+        </div>
+
+        <div class="news-item">
+          <div class="news-meta">
+            <span class="subcat-label">政策與法規</span>
+            <span class="news-source">工商時報</span>
+            <span class="news-dot">·</span>
+            <span class="news-source">09.15</span>
+            <span class="cross-topic-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4h-5.5a1.5 1.5 0 0 0 -1.5 1.5v5.5c0 .4 .15 .78 .44 1.06l8 8c.58 .58 1.53 .58 2.12 0l6-6c.58 -.58 .58 -1.53 0 -2.12l-8 -8c-.28 -.28 -.66 -.44 -1.06 -.44z"/><circle cx="9" cy="9" r="1"/></svg>同時歸類於國際級資本市場</span>
+          </div>
+          <a class="news-title" href="#">亞資高雄專區試辦業務展延　金管會三叮囑</a>
+        </div>
+
+        <div class="news-item">
+          <div class="news-meta">
+            <span class="subcat-label">同業動態</span>
+            <span class="news-source">工商時報</span>
+            <span class="news-dot">·</span>
+            <span class="news-source">09.15</span>
+          </div>
+          <a class="news-title" href="#">金管會召14金控　擘亞資前景</a>
+        </div>
+
+        <div class="news-item">
+          <div class="news-meta">
+            <span class="subcat-label">商品與業務</span>
+            <span class="news-source">工商時報</span>
+            <span class="news-dot">·</span>
+            <span class="news-source">09.09</span>
+          </div>
+          <a class="news-title" href="#">獨家》亞資中心台南專區二大牛肉曝光！9/17南市府與金融業簽MOU</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="bottom-nav">
+      <div class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></span>日期</div>
+      <div class="nav-item active"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4h-5.5a1.5 1.5 0 0 0 -1.5 1.5v5.5c0 .4 .15 .78 .44 1.06l8 8c.58 .58 1.53 .58 2.12 0l6-6c.58 -.58 .58 -1.53 0 -2.12l-8 -8c-.28 -.28 -.66 -.44 -1.06 -.44z"/><circle cx="9" cy="9" r="1"/></svg></span>議題</div>
+      <div class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 16 9.5 10.5 13.5 14.5 20 8"/><polyline points="15 8 20 8 20 13"/></svg></span>趨勢</div>
+      <div class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3l8 -8"/><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"/></svg></span>待審核</div>
+    </div>
+  </div>
+</div>
+
+<div class="phone-wrap">
+  <div class="phone-label">趨勢洞察 — 跨月持續性摘要</div>
+  <div class="phone">
+    <div class="header">
+      <div class="brand-c">
+        <span class="vert">BANK<br>SINOPAC</span>
+        <p class="name">新聞觀測站<em>金融政策彙整</em></p>
+      </div>
+    </div>
+    <div class="content">
+      <div class="topic-tabs">
+        <span class="topic-tab active">亞洲資產管理中心</span>
+        <span class="topic-tab">國際級資本市場</span>
+        <span class="topic-tab">三軌金融</span>
+        <span class="topic-tab">全齡金融</span>
+        <span class="topic-tab">信任金融</span>
+        <span class="topic-tab">金融大回饋</span>
+      </div>
+
+      <div class="section-label" style="margin-top:16px;">趨勢洞察（2025.03 至今）</div>
+
+      <div class="news-item">
+        <div class="news-meta">
+          <span class="tag t1" style="opacity:.85">2026 Q3（最新）</span>
+          <span class="subcat-label">同業動態</span>
+        </div>
+        <p style="font-size:13px; line-height:1.7; color:var(--text-main); margin:0;">
+          地方擴散與檢視期。高雄專區進入試辦成果檢視階段，台南加入成為第二個地方
+          專區，顯示政策從單一示範點走向多地複製的階段。
+        </p>
+      </div>
+
+      <div class="news-item">
+        <div class="news-meta">
+          <span class="tag t1" style="opacity:.85">2025 Q4 — 2026 Q1</span>
+          <span class="subcat-label">政策與法規</span>
+        </div>
+        <p style="font-size:13px; line-height:1.7; color:var(--text-main); margin:0;">
+          法規鬆綁與量化成果期。密集發布法規鬆綁進度、TISA開戶數字、資產管理規模
+          增幅等具體數據，敘事從「願景」轉向「進度可被檢驗的政策」。
+        </p>
+      </div>
+
+      <div class="news-item">
+        <div class="news-meta">
+          <span class="tag t1" style="opacity:.85">2025 Q1</span>
+          <span class="subcat-label">政策與法規</span>
+        </div>
+        <p style="font-size:13px; line-height:1.7; color:var(--text-main); margin:0;">
+          政策倡議期。聚焦「為什麼台灣需要亞資中心」，強調天時地利人和條件已具備，
+          高雄新灣區作為政策亮點首次成形。
+        </p>
+      </div>
+
+      <div class="review-block" style="margin-top:24px;">
+        <p class="review-title">洞察說明</p>
+        <p style="font-size:12.5px; line-height:1.7; color:var(--text-sub); margin:0;">
+          此報告由每月重點摘要彙整生成，建議每季更新一次，用以掌握議題討論方向
+          的中長期變化，而非單月的個別事件。
+        </p>
+      </div>
+
+    </div>
+    <div class="bottom-nav">
+      <div class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></span>日期</div>
+      <div class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4h-5.5a1.5 1.5 0 0 0 -1.5 1.5v5.5c0 .4 .15 .78 .44 1.06l8 8c.58 .58 1.53 .58 2.12 0l6-6c.58 -.58 .58 -1.53 0 -2.12l-8 -8c-.28 -.28 -.66 -.44 -1.06 -.44z"/><circle cx="9" cy="9" r="1"/></svg></span>議題</div>
+      <div class="nav-item active"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 16 9.5 10.5 13.5 14.5 20 8"/><polyline points="15 8 20 8 20 13"/></svg></span>趨勢</div>
+      <div class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3l8 -8"/><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"/></svg></span>待審核</div>
+    </div>
+  </div>
+</div>
+
+<div class="phone-wrap">
+  <div class="phone-label">待審核 — 未分類文章確認</div>
+  <div class="phone">
+    <div class="header">
+      <div class="brand-c">
+        <span class="vert">BANK<br>SINOPAC</span>
+        <p class="name">新聞觀測站<em>金融政策彙整</em></p>
+      </div>
+    </div>
+    <div class="content">
+      <div class="section-label" style="margin-top:0;">待審核（本日新增 3 則）</div>
+
+      <div class="manual-add">
+        <p class="ma-label">手動新增新聞</p>
+        <input class="ma-url-input" type="text" placeholder="貼上新聞連結，如 https://www.ctee.com.tw/news/...">
+        <div class="ma-row">
+          <select class="ma-topic-select">
+            <option>選擇議題</option>
+            <option>亞洲資產管理中心</option>
+            <option>國際級資本市場</option>
+            <option>三軌金融</option>
+            <option>全齡金融</option>
+            <option>信任金融</option>
+            <option>金融大回饋</option>
+          </select>
+          <button class="ma-submit">新增</button>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <a class="rt" href="#" target="_blank"><span>高雄新灣區金融科技園區　招商再擴大</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1 -2 2H5a2 2 0 0 1 -2 -2V8a2 2 0 0 1 2 -2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        <span class="src">工商時報・09.16</span>
+        <div class="topic-suggest-list">
+          <div class="topic-suggest-row">
+            <div class="ts-info">
+              <span class="ts-topic">亞洲資產管理中心</span>
+              <span class="ts-sub">同業動態</span>
+              <span class="ts-reason">命中關鍵字「新灣區」相似詞</span>
+            </div>
+            <div class="ts-actions">
+              <button class="ts-accept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></button>
+              <button class="ts-remove"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg></button>
+            </div>
+          </div>
+          <div class="topic-suggest-row">
+            <div class="ts-info">
+              <span class="ts-topic">國際級資本市場</span>
+              <span class="ts-sub none">子分類無命中，需人工指定</span>
+              <span class="ts-reason">命中關鍵字「招商」「金融科技園區」</span>
+            </div>
+            <div class="ts-actions">
+              <button class="ts-accept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></button>
+              <button class="ts-remove"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg></button>
+            </div>
+          </div>
+          <div class="add-topic-row">
+            <span>補充議題：</span>
+            <select>
+              <option>選擇議題</option>
+              <option>三軌金融</option>
+              <option>全齡金融</option>
+              <option>信任金融</option>
+              <option>金融大回饋</option>
+            </select>
+            <button class="add-btn">＋ 新增</button>
+          </div>
+        </div>
+        <div class="review-actions">
+          <button class="approve">全部採用</button>
+          <button class="edit">個別修改</button>
+          <button class="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2 -2l1 -13"/><path d="M10 11l0 6"/><path d="M14 11l0 6"/><path d="M9 7l0 -2a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1l0 2"/></svg></button>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <a class="rt" href="#" target="_blank"><span>TISA上路週年　開戶數破22萬</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1 -2 2H5a2 2 0 0 1 -2 -2V8a2 2 0 0 1 2 -2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        <span class="src">經濟日報・09.16</span>
+        <div class="topic-suggest-list">
+          <div class="topic-suggest-row">
+            <div class="ts-info">
+              <span class="ts-topic">亞洲資產管理中心</span>
+              <span class="ts-sub">政策與法規</span>
+              <span class="ts-reason">命中關鍵字「TISA」</span>
+            </div>
+            <div class="ts-actions">
+              <button class="ts-accept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></button>
+              <button class="ts-remove"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg></button>
+            </div>
+          </div>
+          <div class="add-topic-row">
+            <span>補充議題：</span>
+            <select>
+              <option>選擇議題</option>
+              <option>國際級資本市場</option>
+              <option>三軌金融</option>
+              <option>全齡金融</option>
+              <option>信任金融</option>
+              <option>金融大回饋</option>
+            </select>
+            <button class="add-btn">＋ 新增</button>
+          </div>
+        </div>
+        <div class="review-actions">
+          <button class="approve">全部採用</button>
+          <button class="edit">個別修改</button>
+          <button class="delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2 -2l1 -13"/><path d="M10 11l0 6"/><path d="M14 11l0 6"/><path d="M9 7l0 -2a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1l0 2"/></svg></button>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <a class="rt" href="#" target="_blank"><span>金融科技創新園區　新一輪招商說明會登場</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1 -2 2H5a2 2 0 0 1 -2 -2V8a2 2 0 0 1 2 -2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        <span class="src">工商時報・09.15</span>
+        <div class="topic-suggest-list">
+          <p style="font-size:11.5px; color:var(--text-muted); margin:4px 0 10px;">規則無命中任何議題，需人工判斷分類</p>
+          <div class="add-topic-row">
+            <span>指定議題：</span>
+            <select>
+              <option>選擇議題</option>
+              <option>亞洲資產管理中心</option>
+              <option>國際級資本市場</option>
+              <option>三軌金融</option>
+              <option>全齡金融</option>
+              <option>信任金融</option>
+              <option>金融大回饋</option>
+            </select>
+            <button class="add-btn">＋ 新增</button>
+          </div>
+        </div>
+        <div class="confirm-delete">
+          <span class="cd-text">確定要刪除這則新聞嗎？此動作無法復原。</span>
+          <div class="cd-btns">
+            <button class="cd-no">取消</button>
+            <button class="cd-yes">確定刪除</button>
+          </div>
+        </div>
+      </div>
+      <div class="review-mode-banner">
+        <div class="banner-top">
+          <span>目前為<b>全量人工審核期</b>，規則建議僅供參考，尚未自動上架。</span>
+          <span class="banner-toggle">準確率統計<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </div>
+        <div class="accuracy-detail">
+          <div class="accuracy-row">
+            <span class="topic-name">亞洲資產管理中心</span>
+            <span class="accuracy-bar-track"><span class="accuracy-bar-fill" style="width:92%"></span></span>
+            <span class="accuracy-pct">92%</span>
+          </div>
+          <div class="accuracy-row">
+            <span class="topic-name">國際級資本市場</span>
+            <span class="accuracy-bar-track"><span class="accuracy-bar-fill" style="width:78%"></span></span>
+            <span class="accuracy-pct">78%</span>
+          </div>
+          <div class="accuracy-row">
+            <span class="topic-name">三軌金融</span>
+            <span class="accuracy-bar-track"><span class="accuracy-bar-fill" style="width:41%"></span></span>
+            <span class="accuracy-pct">41%</span>
+          </div>
+          <div class="accuracy-row">
+            <span class="topic-name">全齡金融</span>
+            <span class="accuracy-bar-track"><span class="accuracy-bar-fill" style="width:85%"></span></span>
+            <span class="accuracy-pct">85%</span>
+          </div>
+          <div class="accuracy-row">
+            <span class="topic-name">信任金融</span>
+            <span class="accuracy-bar-track"><span class="accuracy-bar-fill" style="width:63%"></span></span>
+            <span class="accuracy-pct">63%</span>
+          </div>
+          <div class="accuracy-row">
+            <span class="topic-name">金融大回饋</span>
+            <span class="accuracy-bar-track"><span class="accuracy-bar-fill" style="width:55%"></span></span>
+            <span class="accuracy-pct">55%</span>
+          </div>
+          <p class="accuracy-note">準確率＝人工審核時「採用規則建議」的比例（近30天）。建議單一議題連續穩定達 90% 以上時，可考慮切換該議題為自動分類。</p>
+        </div>
+      </div>
+
+      <div class="coverage-block">
+        <p class="cv-label">爬蟲涵蓋率</p>
+        <div class="cv-stat-row">
+          <span class="cv-name">近30天自動爬取</span>
+          <span class="cv-value">142 則</span>
+        </div>
+        <div class="cv-stat-row">
+          <span class="cv-name">手動新增（爬蟲漏抓）</span>
+          <span class="cv-value"><em>7 則</em></span>
+        </div>
+        <div class="cv-stat-row">
+          <span class="cv-name">涵蓋率</span>
+          <span class="cv-value"><em>95.3%</em></span>
+        </div>
+        <p class="cv-note">涵蓋率＝自動爬取則數 ÷（自動爬取＋手動新增）。手動新增的新聞會標記來源網站與關鍵字，用以檢視爬蟲是否有系統性漏抓的類型。</p>
+      </div>
+
+    </div>
+    <div class="bottom-nav">
+      <div class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><line x1="3.5" y1="9.5" x2="20.5" y2="9.5"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></span>日期</div>
+      <div class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4h-5.5a1.5 1.5 0 0 0 -1.5 1.5v5.5c0 .4 .15 .78 .44 1.06l8 8c.58 .58 1.53 .58 2.12 0l6-6c.58 -.58 .58 -1.53 0 -2.12l-8 -8c-.28 -.28 -.66 -.44 -1.06 -.44z"/><circle cx="9" cy="9" r="1"/></svg></span>議題</div>
+      <div class="nav-item"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 16 9.5 10.5 13.5 14.5 20 8"/><polyline points="15 8 20 8 20 13"/></svg></span>趨勢</div>
+      <div class="nav-item active"><span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3l8 -8"/><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"/></svg></span>待審核</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
