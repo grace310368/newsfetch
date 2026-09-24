@@ -17,8 +17,10 @@
   --topic-5: #7C5C3E; /* 信任金融 */
   --topic-6: #C08552; /* 金融大回饋 */
 
-  --serif: 'Noto Serif TC', 'Songti TC', 'PMingLiU', serif;
-  --sans: 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  /* 全站統一使用微軟正黑體；非 Windows 裝置沒有此字型時依序改用蘋方、思源黑體 */
+  --font: 'Microsoft JhengHei', '微軟正黑體', 'PingFang TC', 'Noto Sans TC', 'Heiti TC', sans-serif;
+  --serif: var(--font);
+  --sans: var(--font);
 }
 
 * { box-sizing: border-box; }

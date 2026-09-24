@@ -2,8 +2,8 @@ name: 每日爬蟲
 
 on:
   schedule:
-    # 台灣時間每天 07:00（UTC 前一天 23:00）；GitHub cron 可能延遲數分鐘到數十分鐘
-    - cron: "0 23 * * *"
+    # 台灣時間每天 08:00（UTC 00:00）；GitHub cron 可能延遲數分鐘到數十分鐘
+    - cron: "0 0 * * *"
   workflow_dispatch:
     inputs:
       terms:
