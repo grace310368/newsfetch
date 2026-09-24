@@ -11,6 +11,7 @@ from . import config, review
 from .db import now_iso, url_exists
 from .extract import fetch_article
 from .http import EMPTY_FIELDS, FetchError, PoliteSession
+from . import sources as source_modules
 from .sources import ctee, udn
 
 
@@ -74,6 +75,7 @@ def run_crawl(conn: sqlite3.Connection, run_date: str, session: PoliteSession | 
     result = RunResult(run_date=run_date, started_at=now_iso())
     earliest = (date.fromisoformat(run_date) - timedelta(days=config.LOOKBACK_DAYS)).isoformat()
     udn.reset_cache()
+    source_modules.reset_run_state()
 
     # 1) 搜尋：收集候選連結（記錄每個連結是被哪個關鍵字找到的）
     candidates: dict[str, tuple[str, str]] = {}
@@ -104,6 +106,8 @@ def run_crawl(conn: sqlite3.Connection, run_date: str, session: PoliteSession | 
         if ok and all(t.found == 0 for t in ok):
             result.needs_attention.append(
                 f"{source_name}所有關鍵字搜尋皆無任何文章連結，搜尋頁結構可能已改變")
+
+    result.needs_attention.extend(dict.fromkeys(source_modules.RUN_NOTES))
 
     # 2) 單篇抓取與分類
     for url, (source_name, term) in candidates.items():

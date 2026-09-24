@@ -4,6 +4,7 @@ udn 反爬蟲較嚴，依序嘗試多種策略，任一策略取得連結即停�
 1. 經濟日報搜尋頁 HTML（只取搜尋結果區塊）
 2. udn 站內搜尋 JSON API（聯合新聞網，結果含 udn.com/news/story）
 3. 經濟日報 RSS（抓最新文章，再以關鍵字比對標題／描述）
+4. Bing 新聞 RSS（查詢「{關鍵字} 經濟日報」）
 每一種策略的失敗原因都會回報給執行報告，方便之後調整。
 """
 from __future__ import annotations
@@ -14,7 +15,7 @@ from xml.etree import ElementTree
 
 from .. import config
 from ..http import PARSE_ERROR, FetchError, PoliteSession
-from . import extract_article_links
+from . import bing, extract_article_links, run_strategies
 
 NAME = config.SOURCE_UDN
 
@@ -73,30 +74,17 @@ def search_rss(term: str, session: PoliteSession, limit: int) -> list[str]:
     return extract_article_links(" ".join(f'href="{u}"' for u in links), "https://money.udn.com/", limit)
 
 
-STRATEGIES = [("經濟日報搜尋頁", search_page), ("udn 搜尋 API", search_api), ("經濟日報 RSS", search_rss)]
+def search_bing(term: str, session: PoliteSession, limit: int) -> list[str]:
+    return bing.news_links(term, NAME, "udn.com", session, limit)
+
+
+STRATEGIES = [("經濟日報搜尋頁", search_page), ("udn 搜尋 API", search_api), ("經濟日報 RSS", search_rss),
+              ("Bing 新聞搜尋", search_bing)]
 
 
 def search(term: str, session: PoliteSession, limit: int = config.MAX_RESULTS_PER_TERM,
            notes: list[str] | None = None) -> list[str]:
-    """依序嘗試各策略；每個策略都出錯時才丟出最後一個錯誤。notes 會收集各策略的失敗說明。"""
-    last_error: FetchError | None = None
-    any_ok = False
-    for label, fn in STRATEGIES:
-        try:
-            links = fn(term, session, limit)
-        except FetchError as e:
-            last_error = e
-            if notes is not None:
-                notes.append(f"{label}失敗：{e}")
-            continue
-        any_ok = True
-        if links:
-            return links
-        if notes is not None:
-            notes.append(f"{label}無結果")
-    if last_error and not any_ok:
-        raise last_error
-    return []
+    return run_strategies(term, session, limit, STRATEGIES, notes, NAME)
 
 
 def reset_cache() -> None:

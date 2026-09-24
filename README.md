@@ -14,8 +14,9 @@ newsfetch/            Python 套件
   config.py           關鍵字庫 SEED_TERMS、議題規則 TOPICS、子分類規則 SUBCATEGORIES（擴充關鍵字改這裡）
   classifier.py       規則式分類（純字串比對，不呼叫 LLM）
   extract.py          單篇文章解析（每日爬蟲與手動新增共用）
-  sources/ctee.py     工商時報搜尋頁
-  sources/udn.py      經濟日報：搜尋頁 → udn 搜尋 API → RSS 三段式備援
+  sources/ctee.py     工商時報：站內搜尋頁 → Bing 新聞備援
+  sources/bing.py     Bing 新聞 RSS（報社站內搜尋被擋時的共用備援）
+  sources/udn.py      經濟日報：搜尋頁 → udn 搜尋 API → RSS → Bing 新聞
   crawler.py          每日爬蟲流程
   review.py           待審核：寫入佇列、核准、刪除、手動新增
   stats.py            分類準確率（議題＋子分類組合）／爬蟲涵蓋率（文章）
@@ -89,10 +90,13 @@ python -m pytest                          # 測試
 
 - **經濟日報**：已用真實網站驗證搜尋頁、udn 搜尋 API 與單篇解析皆可運作。搜尋頁只取搜尋結果區塊
   （`.story__content`），避免抓到頁首跑馬燈的熱門新聞。
-- **工商時報**：開發環境連線 ctee.com.tw 回傳 HTTP 403，無法用真實頁面驗證，解析邏輯以通用的
-  meta／JSON-LD 結構撰寫並用範例 HTML 測試。第一次在 GitHub Actions 執行後請看執行報告：
-  若同樣 403，會歸類為「反爬蟲擋下」，需要再討論替代抓取方式；若搜尋結果混入無關文章，
-  請調整 `sources/ctee.py` 的 `SEARCH_CONTAINERS`。
+- **工商時報**：站內搜尋頁、頻道列表、RSS、sitemap 都被 Cloudflare WAF 以 HTTP 403 擋下
+  （實測 2026-09，機房 IP），但**單篇文章頁可以正常讀取**。因此網址改由 **Bing 新聞 RSS** 取得
+  （查詢「關鍵字 工商時報」，取出工商時報原始網址），再用同一套解析器抓單篇。
+  程式仍會先試站內搜尋（若 GitHub Actions 的 IP 沒被擋就用最完整的來源），被擋一次後該次執行不再重試，
+  並在執行報告「需要人工檢視」註明已改用備援。
+  限制：Bing 每個關鍵字約只回傳 2 則工商時報文章，召回率低於站內搜尋，漏抓的請用「手動新增」補，
+  並觀察爬蟲涵蓋率；若長期偏低，可考慮改用台灣 IP 的 self-hosted runner 執行每日爬蟲。
 - 同一篇文章在不同議題下的子分類，採「議題關鍵字所在句子」判斷，判斷不出時退回整篇判斷。
 - 切換自動分類：`topic_review_mode` 表已就緒（預設全部 `manual_review`），把某議題改為 `auto` 後，
   僅命中自動模式議題且子分類都有判定的文章會直接收錄；介面上的開關尚未設計。

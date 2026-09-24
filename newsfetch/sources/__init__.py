@@ -37,3 +37,51 @@ def extract_article_links(html: str, base: str, limit: int | None = None,
         if limit and len(found) >= limit:
             break
     return list(found)
+
+
+# 本次執行中需要寫進執行報告「需要人工檢視」的訊息（例如站內搜尋被擋、已改用備援）
+RUN_NOTES: list[str] = []
+# 本次執行中已判定被擋的策略，後續關鍵字直接略過，避免浪費請求
+_blocked_strategies: set[str] = set()
+
+
+def reset_run_state() -> None:
+    RUN_NOTES.clear()
+    _blocked_strategies.clear()
+
+
+def run_strategies(term: str, session, limit: int, strategies, notes: list[str] | None = None,
+                   source_name: str = "") -> list[str]:
+    """依序嘗試各策略，第一個取得連結的策略即回傳。
+
+    - 策略被反爬蟲擋下（BLOCKED）後，本次執行不再嘗試該策略，並記錄一次到 RUN_NOTES
+    - 每個策略都出錯時才丟出最後一個錯誤；有策略正常執行但沒結果則回傳空清單
+    """
+    from ..http import BLOCKED, FetchError
+
+    last_error: FetchError | None = None
+    any_ok = False
+    for label, fn in strategies:
+        key = f"{source_name}:{label}"
+        if key in _blocked_strategies:
+            continue
+        try:
+            links = fn(term, session, limit)
+        except FetchError as e:
+            last_error = e
+            if notes is not None:
+                notes.append(f"{label}失敗：{e}")
+            if e.category == BLOCKED:
+                _blocked_strategies.add(key)
+                RUN_NOTES.append(f"{source_name}「{label}」被反爬蟲擋下（{e}），本次執行改用其他備援策略")
+            continue
+        any_ok = True
+        if links:
+            if notes is not None and label != strategies[0][0]:
+                notes.append(f"由「{label}」取得連結")
+            return links
+        if notes is not None:
+            notes.append(f"{label}無結果")
+    if last_error and not any_ok:
+        raise last_error
+    return []
