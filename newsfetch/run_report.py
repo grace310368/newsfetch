@@ -13,7 +13,29 @@ def _md_escape(text: str) -> str:
     return (text or "").replace("|", "\\|").replace("\n", " ")
 
 
-def render_markdown(r: RunResult) -> str:
+KIND_LABEL = {"seed": "搜尋關鍵字", "topic": "議題規則"}
+
+
+def render_learning(learning: dict) -> list[str]:
+    m = learning["missed"]
+    lines = ["## 關鍵字學習", "",
+             f"手動新增（爬蟲漏抓）共 {m['manual_total']} 篇：關鍵字缺口 {m['keyword_gap']} 篇、"
+             f"已含搜尋關鍵字但仍漏抓（來源抓取問題）{m['source_gap']} 篇。", ""]
+    if m["source_gap_examples"]:
+        lines.append("來源抓取問題範例：" + "；".join(m["source_gap_examples"]))
+        lines.append("")
+    sugs = learning["suggestions"][:10]
+    if not sugs:
+        return lines + ["- 目前沒有新的關鍵字建議", ""]
+    lines += ["| 建議 | 關鍵字 | 對象 | 佐證 |", "|---|---|---|---|"]
+    for sg in sugs:
+        action = "新增" if sg["action"] == "adopt" else "停用"
+        target = KIND_LABEL[sg["kind"]] + (f"「{sg['topic']}」" if sg["topic"] else "")
+        lines.append(f"| {action} | {_md_escape(sg['term'])} | {target} | {_md_escape(sg['summary'])} |")
+    return lines + ["", "（於儀表板「待審核」畫面的「關鍵字建議」區塊採用或忽略）", ""]
+
+
+def render_markdown(r: RunResult, learning: dict | None = None) -> str:
     lines = [f"# 每日爬蟲執行報告 {r.run_date}", ""]
     lines += [f"- 開始：{r.started_at}", f"- 結束：{r.finished_at}",
               f"- 新增待審核：**{len(r.new_pending)}** 則", f"- 自動收錄（自動模式議題）：{len(r.auto_added)} 則",
@@ -61,15 +83,18 @@ def render_markdown(r: RunResult) -> str:
     lines += [f"## 規則未命中文章（{len(unclassified)}）", "",
               "以下文章被關鍵字搜尋找到，但議題規則全部沒命中，可作為擴充 TOPICS 關鍵字的依據：", ""]
     lines += [f"- [{_md_escape(a['title'])}]({a['url']})（搜尋詞「{a['term']}」）" for a in unclassified] or ["- 無"]
-    lines += ["", "---", "討論格式建議：問題現象／可能原因／改進建議。"]
+    lines.append("")
+    if learning:
+        lines += render_learning(learning)
+    lines += ["---", "討論格式建議：問題現象／可能原因／改進建議。"]
     return "\n".join(lines) + "\n"
 
 
-def write_report(r: RunResult, log_dir: Path | None = None) -> Path:
+def write_report(r: RunResult, log_dir: Path | None = None, learning: dict | None = None) -> Path:
     log_dir = Path(log_dir or config.LOG_DIR)
     log_dir.mkdir(parents=True, exist_ok=True)
     md = log_dir / f"{r.run_date}-report.md"
-    md.write_text(render_markdown(r), encoding="utf-8")
+    md.write_text(render_markdown(r, learning), encoding="utf-8")
     (log_dir / f"{r.run_date}-report.json").write_text(
         json.dumps(asdict(r), ensure_ascii=False, indent=2), encoding="utf-8")
     return md

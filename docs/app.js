@@ -52,7 +52,7 @@
   const state = {
     view: 'date',
     mode: 'pages', // 'local' | 'pages'
-    data: { articles: [], pending: [], reports: { monthly: {}, trend: {} }, stats: null, meta: null },
+    data: { articles: [], pending: [], reports: { monthly: {}, trend: {} }, stats: null, meta: null, keywords: null },
     topics: TOPICS_DEFAULT,
     subcats: SUBCATS_DEFAULT,
     today: taipeiToday(),
@@ -68,6 +68,8 @@
     cards: {}, // id -> 卡片狀態
     manual: { url: '', topics: [], open: false, busy: false, msg: '', error: false },
     statsOpen: false,
+    learnOpen: false,
+    learnMsg: '',
     queue: store.get(LS.queue, []),
     submitted: store.get(LS.submitted, []),
     gh: store.get(LS.gh, {}),
@@ -89,11 +91,12 @@
   }
 
   async function loadData() {
-    const [articles, pending, reports, stats, meta] = await Promise.all([
+    const [articles, pending, reports, stats, meta, keywords] = await Promise.all([
       fetchJSON('articles', []), fetchJSON('pending', []),
       fetchJSON('reports', { monthly: {}, trend: {} }), fetchJSON('stats', null), fetchJSON('meta', null),
+      fetchJSON('keywords', null),
     ]);
-    state.data = { articles, pending, reports, stats, meta };
+    state.data = { articles, pending, reports, stats, meta, keywords };
     if (meta?.topics?.length) state.topics = meta.topics;
     if (meta?.subcategories?.length) state.subcats = meta.subcategories;
     if (!state.topics.includes(state.topic)) state.topic = state.topics[0];
@@ -121,6 +124,15 @@
     state.queue.forEach((op) => op.id != null && ids.add(op.id));
     state.submitted.forEach((s) => s.ids.forEach((id) => ids.add(id)));
     return ids;
+  }
+
+  const kwKey = (o) => `${o.kind}|${o.topic || ''}|${o.term}`;
+
+  function visibleSuggestions() {
+    const hidden = new Set();
+    state.queue.forEach((op) => op.type === 'keyword' && hidden.add(kwKey(op)));
+    state.submitted.forEach((s) => (s.keys || []).forEach((k) => hidden.add(k)));
+    return (state.data.keywords?.suggestions || []).filter((s) => !hidden.has(kwKey(s)));
   }
 
   function visiblePending() {
@@ -468,6 +480,65 @@
     </div>`;
   }
 
+  function renderLearning() {
+    const kw = state.data.keywords;
+    if (!kw) return '';
+    const list = visibleSuggestions();
+    const m = kw.missed || {};
+    const learned = kw.learned || [];
+    const adopted = learned.filter((r) => r.status === 'active').length;
+    const disabled = learned.filter((r) => r.status === 'disabled').length;
+    const target = (s) => {
+      if (s.action === 'disable') return s.kind === 'seed' ? '建議停用此搜尋關鍵字' : `建議從「${s.topic}」議題規則停用`;
+      return s.kind === 'seed' ? '建議新增為搜尋關鍵字' : `建議加入「${s.topic}」議題規則`;
+    };
+    const rows = list.map((s) => `<div class="topic-suggest-row">
+        <div class="ts-info">
+          <span class="ts-topic">${esc(s.term)}</span>
+          <span class="ts-sub">${esc(target(s))}</span>
+          <span class="ts-reason">${esc(s.summary)}</span>
+          ${s.examples?.length ? `<span class="ts-reason">例：${esc(s.examples.join('／'))}</span>` : ''}
+        </div>
+        <div class="ts-actions">
+          <button class="ts-accept" data-action="kw-adopt" data-key="${esc(kwKey(s))}" aria-label="${s.action === 'disable' ? '停用' : '採用'}">${ICON.check}</button>
+          <button class="ts-remove" data-action="kw-ignore" data-key="${esc(kwKey(s))}" aria-label="忽略此建議">${ICON.cross}</button>
+        </div>
+      </div>`).join('');
+    return `<div class="review-mode-banner learn-banner">
+      <div class="banner-top">
+        <span>關鍵字學習：<b>${list.length}</b> 項建議${adopted || disabled ? `・已採用 ${adopted} 個、停用 ${disabled} 個` : ''}</span>
+        <button class="banner-toggle${state.learnOpen ? ' open' : ''}" data-action="learn-toggle" aria-expanded="${state.learnOpen}">${state.learnOpen ? '收合' : '查看'}${ICON.chevron}</button>
+      </div>
+      <div class="accuracy-detail"${state.learnOpen ? '' : ' hidden'}>
+        <p class="accuracy-note" style="margin-top:0;">近一年手動新增 ${m.manual_total || 0} 則：${m.keyword_gap || 0} 則不含任何搜尋關鍵字（關鍵字缺口），${m.source_gap || 0} 則已含搜尋關鍵字仍漏抓（來源抓取問題，擴充關鍵字無法解決）。</p>
+        ${rows || '<p class="ts-empty">目前沒有新的建議。持續審核與手動新增後，系統會從中找出值得加入或停用的關鍵字。</p>'}
+        ${state.learnMsg ? `<p class="card-msg" style="margin-top:8px;">${esc(state.learnMsg)}</p>` : ''}
+        <p class="accuracy-note">建議依審核結果統計產生（不使用 AI），採用後隔天的爬蟲與分類即生效；「忽略」的建議不會再出現。</p>
+      </div>
+    </div>`;
+  }
+
+  async function keywordOp(key, verb) {
+    const s = visibleSuggestions().find((x) => kwKey(x) === key);
+    if (!s) return;
+    const action = verb === 'ignore' ? 'ignore' : s.action; // adopt 或 disable
+    const op = { type: 'keyword', action, kind: s.kind, topic: s.topic, term: s.term, evidence: s.summary };
+    state.learnMsg = '';
+    const done = { adopt: `已採用「${s.term}」`, disable: `已停用「${s.term}」`, ignore: `已忽略「${s.term}」` }[action];
+    if (state.mode === 'local') {
+      try {
+        await api('keyword', op);
+        await loadData();
+        toast(done);
+      } catch (e) { state.learnMsg = e.message; }
+    } else {
+      state.queue.push(op);
+      saveQueue();
+      toast(`${done}，待送出`);
+    }
+    render();
+  }
+
   function renderReview() {
     const list = visiblePending();
     const todayCount = list.filter((p) => (p.created_at || '').startsWith(state.today)).length;
@@ -476,7 +547,8 @@
       ${renderSyncCard()}
       ${renderManualAdd()}
       ${cards}
-      ${renderStats()}`;
+      ${renderStats()}
+      ${renderLearning()}`;
   }
 
   // ------------------------------------------------------------------ 審核邏輯
@@ -596,7 +668,7 @@
           const err = await res.json().catch(() => ({}));
           throw new Error(`GitHub 回應 ${res.status}${err.message ? `：${err.message}` : ''}`);
         }
-        state.submitted.push({ at: Date.now(), count: ops.length, ids: ops.filter((o) => o.id != null).map((o) => o.id) });
+        state.submitted.push({ at: Date.now(), count: ops.length, ids: ops.filter((o) => o.id != null).map((o) => o.id), keys: ops.filter((o) => o.type === 'keyword').map(kwKey) });
         state.queue = state.queue.slice(ops.length);
         saveQueue();
         store.set(LS.submitted, state.submitted);
@@ -709,6 +781,9 @@
       case 'ma-toggle': state.manual.open = !state.manual.open; return render();
       case 'ma-submit': return manualSubmit();
       case 'stats-toggle': state.statsOpen = !state.statsOpen; return render();
+      case 'learn-toggle': state.learnOpen = !state.learnOpen; return render();
+      case 'kw-adopt': return keywordOp(el.dataset.key, 'adopt');
+      case 'kw-ignore': return keywordOp(el.dataset.key, 'ignore');
       case 'sync-settings': state.syncOpen = true; return render();
       case 'sync-save':
         state.gh = { repo: $('#gh-repo').value.trim(), ref: $('#gh-ref').value.trim(), token: $('#gh-token').value.trim() };

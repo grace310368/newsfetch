@@ -8,7 +8,7 @@ from __future__ import annotations
 import sqlite3
 from dataclasses import dataclass
 
-from . import config
+from . import config, rules
 from .classifier import Suggestion, classify, classify_for_topics
 from .db import now_iso, topic_modes, url_exists
 from .extract import Article, fetch_article, normalize_url
@@ -44,7 +44,8 @@ def _insert_article(conn: sqlite3.Connection, art: dict, origin: str, items: lis
     )
 
 
-def ingest(conn: sqlite3.Connection, article: Article, suggestions: list[Suggestion], origin: str) -> str:
+def ingest(conn: sqlite3.Connection, article: Article, suggestions: list[Suggestion], origin: str,
+           search_term: str | None = None) -> str:
     """把新文章寫入待審核佇列。
 
     若所有建議議題都已切換為自動模式（且每組都有子分類），直接寫入正式表，回傳 'auto'；
@@ -70,24 +71,26 @@ def ingest(conn: sqlite3.Connection, article: Article, suggestions: list[Suggest
 
     cur = conn.execute(
         """INSERT INTO pending_review(url, title, source, published_date, published_time, summary,
-               raw_keywords, origin, status, created_at)
-           VALUES (?,?,?,?,?,?,?,?, 'pending', ?)""",
+               raw_keywords, origin, status, created_at, search_term)
+           VALUES (?,?,?,?,?,?,?,?, 'pending', ?, ?)""",
         (article.url, article.title, article.source, article.published_date, article.published_time,
-         article.summary, article.raw_keywords, origin, created),
+         article.summary, article.raw_keywords, origin, created, search_term),
     )
     pid = cur.lastrowid
     conn.executemany(
         """INSERT INTO pending_review_suggestions(pending_review_id, suggested_topic,
-               suggested_subcategory, suggested_reason) VALUES (?,?,?,?)""",
-        [(pid, s.topic, s.subcategory, s.reason) for s in suggestions],
+               suggested_subcategory, suggested_reason, matched_terms) VALUES (?,?,?,?,?)""",
+        [(pid, s.topic, s.subcategory, s.reason, ",".join(s.matched_terms) or None) for s in suggestions],
     )
     conn.commit()
     return "pending"
 
 
-def ingest_crawled(conn: sqlite3.Connection, article: Article) -> tuple[str, list[Suggestion]]:
-    suggestions = classify(article.title, article.classify_text, article.keywords)
-    return ingest(conn, article, suggestions, "crawler"), suggestions
+def ingest_crawled(conn: sqlite3.Connection, article: Article, search_term: str | None = None,
+                   topics: dict[str, list[str]] | None = None) -> tuple[str, list[Suggestion]]:
+    topics = topics if topics is not None else rules.active_topics(conn)
+    suggestions = classify(article.title, article.classify_text, article.keywords, topics)
+    return ingest(conn, article, suggestions, "crawler", search_term), suggestions
 
 
 # ---------------------------------------------------------------------------
@@ -185,7 +188,7 @@ def manual_add(conn: sqlite3.Connection, url: str, topics: list[str],
         raise ReviewError(f"無法抓取這則新聞：{e}。請確認連結是否正確。") from e
     if url_exists(conn, article.url):
         raise ReviewError("這則新聞已經收錄")
-    suggestions = classify_for_topics(topics, article.title, article.classify_text)
+    suggestions = classify_for_topics(topics, article.title, article.classify_text, rules.active_topics(conn))
     ingest(conn, article, suggestions, "manual")
     pid = conn.execute("SELECT id FROM pending_review WHERE url = ?", (article.url,)).fetchone()["id"]
     return {"id": pid, "title": article.title, "source": article.source, "published_date": article.published_date}
@@ -200,6 +203,7 @@ def apply_op(conn: sqlite3.Connection, op: dict, session: PoliteSession | None =
     {"type": "finalize", "id": 12, "items": [{"topic": "...", "subcategory": "..."}]}
     {"type": "delete", "id": 12, "reason": "..."}
     {"type": "manual_add", "url": "https://...", "topics": ["..."]}
+    {"type": "keyword", "action": "adopt|ignore|disable", "term": "...", "kind": "seed|topic", "topic": "..."}
     """
     kind = op.get("type")
     if kind == "finalize":
@@ -210,6 +214,12 @@ def apply_op(conn: sqlite3.Connection, op: dict, session: PoliteSession | None =
         return {"status": "deleted"}
     if kind == "manual_add":
         return {"status": "added", **manual_add(conn, op.get("url", ""), op.get("topics", []), session)}
+    if kind == "keyword":
+        status = {"adopt": "active", "ignore": "ignored", "disable": "disabled"}.get(op.get("action"))
+        if not status:
+            raise ReviewError(f"未知的關鍵字操作：{op.get('action')}")
+        rules.set_rule(conn, op.get("term", ""), op.get("kind", ""), op.get("topic", ""), status, op.get("evidence", ""))
+        return {"status": status}
     raise ReviewError(f"未知的操作類型：{kind}")
 
 

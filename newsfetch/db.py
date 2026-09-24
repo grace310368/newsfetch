@@ -6,6 +6,10 @@ schema 依需求文件設計；額外增加的欄位／表：
 - crawl_seen：已看過但未收錄的 URL（例如發布日期超出回溯範圍、抓取失敗次數），
   避免每天重複抓取同一批舊文章
 - topic_review_mode：各議題為人工審核或自動分類模式（本階段預設全部人工審核）
+- keyword_rules：關鍵字學習結果（採用的新關鍵字、忽略的建議、停用的誤觸關鍵字），
+  與 config.py 的基礎詞庫合併後生效
+- pending_review.search_term：爬蟲是用哪個搜尋關鍵字找到這篇（評估各關鍵字成效）
+- pending_review_suggestions.matched_terms：這組議題建議命中的規則關鍵字（評估誤觸率）
 """
 from __future__ import annotations
 
@@ -74,6 +78,18 @@ CREATE TABLE IF NOT EXISTS topic_review_mode (
     mode TEXT DEFAULT 'manual_review'   -- 'manual_review' 或 'auto'
 );
 
+CREATE TABLE IF NOT EXISTS keyword_rules (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    term TEXT NOT NULL,
+    kind TEXT NOT NULL,               -- 'seed'（搜尋關鍵字）或 'topic'（議題規則關鍵字）
+    topic TEXT NOT NULL DEFAULT '',   -- kind='topic' 時為所屬議題
+    status TEXT NOT NULL,             -- 'active'（採用）/ 'ignored'（忽略建議）/ 'disabled'（停用既有關鍵字）
+    evidence TEXT,                    -- 採用當下的佐證摘要，供日後回顧
+    created_at TEXT,
+    updated_at TEXT,
+    UNIQUE(term, kind, topic)
+);
+
 CREATE TABLE IF NOT EXISTS crawl_seen (
     url TEXT PRIMARY KEY,
     status TEXT NOT NULL,             -- 'out_of_window' / 'fetch_failed'
@@ -128,8 +144,19 @@ def connect(path: Path | str | None = None) -> sqlite3.Connection:
     return conn
 
 
+# 既有資料庫的欄位補齊（新增欄位時加在這裡）
+MIGRATIONS = [
+    ("pending_review", "search_term", "TEXT"),
+    ("pending_review_suggestions", "matched_terms", "TEXT"),
+]
+
+
 def init_schema(conn: sqlite3.Connection) -> None:
     conn.executescript(SCHEMA)
+    for table, column, decl in MIGRATIONS:
+        cols = {r[1] for r in conn.execute(f"PRAGMA table_info({table})")}
+        if column not in cols:
+            conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {decl}")
     conn.executemany(
         "INSERT OR IGNORE INTO topic_review_mode(topic, mode) VALUES (?, 'manual_review')",
         [(t,) for t in config.TOPIC_NAMES],

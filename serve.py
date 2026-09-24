@@ -47,7 +47,8 @@ class Handler(SimpleHTTPRequestHandler):
         return super().do_GET()
 
     def do_POST(self):
-        routes = {"/api/review/finalize": "finalize", "/api/review/delete": "delete", "/api/manual-add": "manual_add"}
+        routes = {"/api/review/finalize": "finalize", "/api/review/delete": "delete", "/api/manual-add": "manual_add",
+                  "/api/keyword": "keyword"}
         kind = routes.get(self.path)
         if not kind:
             return self._json(404, {"ok": False, "error": "not found"})

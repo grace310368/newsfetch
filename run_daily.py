@@ -12,7 +12,7 @@ from __future__ import annotations
 import argparse
 import sys
 
-from newsfetch import db, export
+from newsfetch import db, export, keyword_learning
 from newsfetch.crawler import run_crawl
 from newsfetch.run_report import write_report
 
@@ -28,7 +28,7 @@ def main(argv: list[str] | None = None) -> int:
     if not args.export_only:
         run_date = args.date or db.today()
         result = run_crawl(conn, run_date, terms=args.terms)
-        report = write_report(result)
+        report = write_report(result, learning=keyword_learning.analyze(conn))
         print(f"新增待審核 {len(result.new_pending)} 則，失敗 {len(result.failures)} 筆；報告：{report}")
         for note in result.needs_attention:
             print(f"[需要人工檢視] {note}")

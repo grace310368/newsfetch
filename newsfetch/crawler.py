@@ -7,7 +7,7 @@ from collections import defaultdict
 from dataclasses import dataclass, field
 from datetime import date, timedelta
 
-from . import config, review
+from . import config, review, rules
 from .db import now_iso, url_exists
 from .extract import fetch_article
 from .http import EMPTY_FIELDS, FetchError, PoliteSession
@@ -70,7 +70,8 @@ def _mark_seen(conn: sqlite3.Connection, url: str, status: str, error: str | Non
 def run_crawl(conn: sqlite3.Connection, run_date: str, session: PoliteSession | None = None,
               terms: list[str] | None = None, sources=None) -> RunResult:
     session = session or PoliteSession()
-    terms = terms or config.all_seed_terms()
+    terms = terms or rules.active_seed_terms(conn)
+    topic_rules = rules.active_topics(conn)
     sources = sources or SOURCES
     result = RunResult(run_date=run_date, started_at=now_iso())
     earliest = (date.fromisoformat(run_date) - timedelta(days=config.LOOKBACK_DAYS)).isoformat()
@@ -131,7 +132,7 @@ def run_crawl(conn: sqlite3.Connection, run_date: str, session: PoliteSession | 
         if not article.summary:
             result.failures.append({"category": EMPTY_FIELDS, "source": source_name,
                                     "target": url, "message": "摘要為空，已收錄但請檢視解析邏輯"})
-        status, suggestions = review.ingest_crawled(conn, article)
+        status, suggestions = review.ingest_crawled(conn, article, term, topic_rules)
         conn.execute("DELETE FROM crawl_seen WHERE url = ?", (url,))
         conn.commit()
         entry = {

@@ -351,6 +351,8 @@ a { color: inherit; }
 
 /* ---------- Review: stats ---------- */
 .stats-area { margin-top: 32px; }
+.learn-banner .topic-suggest-row:last-of-type { border-bottom: none; }
+.learn-banner .ts-reason + .ts-reason { margin-top: 1px; }
 .review-mode-banner { background: var(--bg-panel-deep); border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; }
 .review-mode-banner .banner-top {
   display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--text-sub); line-height: 1.6;

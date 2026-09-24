@@ -5,7 +5,7 @@ import json
 import sqlite3
 from pathlib import Path
 
-from . import config, stats
+from . import config, keyword_learning, stats
 from .db import now_iso, today, topic_modes
 
 
@@ -98,6 +98,7 @@ def export_all(conn: sqlite3.Connection, out_dir: Path | None = None) -> Path:
         "accuracy": stats.accuracy(conn),
         "coverage": stats.coverage(conn),
     })
+    _write(out_dir / "keywords.json", keyword_learning.analyze(conn))
     _write(out_dir / "meta.json", {
         "generated_at": now_iso(),
         "today": today(),
