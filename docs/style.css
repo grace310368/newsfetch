@@ -351,8 +351,12 @@ a { color: inherit; }
 
 /* ---------- Review: stats ---------- */
 .stats-area { margin-top: 32px; }
-.learn-banner .topic-suggest-row:last-of-type { border-bottom: none; }
-.learn-banner .ts-reason + .ts-reason { margin-top: 1px; }
+/* 關鍵字學習：與「爬蟲涵蓋率」等功能卡片同一套樣式 */
+.learn-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.learn-head .cv-label { margin: 0 !important; }
+.learn-detail { margin-top: 4px; padding-top: 2px; border-top: 0.5px solid var(--divider); }
+.learn-detail .topic-suggest-list { margin: 6px 0 0; }
+.learn-card .ts-reason + .ts-reason { margin-top: 1px; }
 .review-mode-banner { background: var(--bg-panel-deep); border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; }
 .review-mode-banner .banner-top {
   display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--text-sub); line-height: 1.6;

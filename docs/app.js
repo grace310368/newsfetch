@@ -504,16 +504,18 @@
           <button class="ts-remove" data-action="kw-ignore" data-key="${esc(kwKey(s))}" aria-label="忽略此建議">${ICON.cross}</button>
         </div>
       </div>`).join('');
-    return `<div class="review-mode-banner learn-banner">
-      <div class="banner-top">
-        <span>關鍵字學習：<b>${list.length}</b> 項建議${adopted || disabled ? `・已採用 ${adopted} 個、停用 ${disabled} 個` : ''}</span>
+    return `<div class="coverage-block learn-card">
+      <div class="learn-head">
+        <p class="cv-label">關鍵字學習</p>
         <button class="banner-toggle${state.learnOpen ? ' open' : ''}" data-action="learn-toggle" aria-expanded="${state.learnOpen}">${state.learnOpen ? '收合' : '查看'}${ICON.chevron}</button>
       </div>
-      <div class="accuracy-detail"${state.learnOpen ? '' : ' hidden'}>
-        <p class="accuracy-note" style="margin-top:0;">近一年手動新增 ${m.manual_total || 0} 則：${m.keyword_gap || 0} 則不含任何搜尋關鍵字（關鍵字缺口），${m.source_gap || 0} 則已含搜尋關鍵字仍漏抓（來源抓取問題，擴充關鍵字無法解決）。</p>
-        ${rows || '<p class="ts-empty">目前沒有新的建議。持續審核與手動新增後，系統會從中找出值得加入或停用的關鍵字。</p>'}
-        ${state.learnMsg ? `<p class="card-msg" style="margin-top:8px;">${esc(state.learnMsg)}</p>` : ''}
-        <p class="accuracy-note">建議依審核結果統計產生（不使用 AI），採用後隔天的爬蟲與分類即生效；「忽略」的建議不會再出現。</p>
+      <div class="cv-stat-row"><span class="cv-name">待處理建議</span><span class="cv-value"><em>${list.length} 項</em></span></div>
+      ${adopted || disabled ? `<div class="cv-stat-row"><span class="cv-name">已採用／已停用</span><span class="cv-value">${adopted} 個／${disabled} 個</span></div>` : ''}
+      <div class="learn-detail"${state.learnOpen ? '' : ' hidden'}>
+        <p class="cv-note">近一年手動新增 ${m.manual_total || 0} 則：${m.keyword_gap || 0} 則不含任何搜尋關鍵字（關鍵字缺口），${m.source_gap || 0} 則已含搜尋關鍵字仍漏抓（來源抓取問題，擴充關鍵字無法解決）。</p>
+        <div class="topic-suggest-list">${rows || '<p class="ts-empty">目前沒有新的建議。持續審核與手動新增後，系統會從中找出值得加入或停用的關鍵字。</p>'}</div>
+        ${state.learnMsg ? `<p class="card-msg">${esc(state.learnMsg)}</p>` : ''}
+        <p class="cv-note">建議依審核結果統計產生（不使用 AI），採用後隔天的爬蟲與分類即生效；「忽略」的建議不會再出現。</p>
       </div>
     </div>`;
   }
