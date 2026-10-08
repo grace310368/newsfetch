@@ -62,3 +62,20 @@ def test_consecutive_failures_stop_source(conn):
                                sources=[("工商時報", blocked)])
     assert len(calls) == 5
     assert any("連續 5 個" in n for n in result.needs_attention)
+
+
+def test_404_is_not_a_failure_and_not_retried(conn, monkeypatch):
+    from newsfetch.http import NOT_FOUND
+    calls = []
+
+    def fake_fetch(url, session=None):
+        calls.append(url)
+        raise FetchError(NOT_FOUND, "HTTP 404", url)
+
+    monkeypatch.setattr(crawler, "fetch_article", fake_fetch)
+    src = [("經濟日報", lambda term, session: ["https://money.udn.com/money/story/5613/8808915"])]
+    r1 = crawler.run_crawl(conn, "2026-10-08", session=object(), terms=["TISA"], sources=src)
+    assert (r1.gone, r1.failures) == (1, [])
+    r2 = crawler.run_crawl(conn, "2026-10-08", session=object(), terms=["TISA"], sources=src)
+    assert r2.skipped_seen == 1 and len(calls) == 1
+    assert "文章已下架（404，不再重抓）：1" in render_markdown(r1)

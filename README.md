@@ -25,6 +25,7 @@ newsfetch/            Python 套件
   llm_reports.py      月度重點報告、趨勢報告（Claude API）
   export.py           輸出前端 JSON
 run_daily.py          每日排程入口
+notify.py             爬蟲完成後在通知 Issue 留言（GitHub 會寄 Email）
 apply_review.py       批次套用審核結果（GitHub Pages 模式）
 generate_reports.py   月度／趨勢報告
 serve.py              本地審核伺服器
@@ -54,6 +55,18 @@ logs/                 每日執行報告 YYYY-MM-DD-report.md／.json
 
 三個 workflow 共用同一個 concurrency group，依序寫入資料庫，不會互相衝突。
 GitHub 的 cron 可能延遲數分鐘到數十分鐘，屬正常現象；爬蟲預設回溯 2 天（`NEWSFETCH_LOOKBACK_DAYS`）以容忍延遲。
+
+## Email 通知（透過 GitHub 通知，不需設定帳號密碼）
+
+每日爬蟲跑完後，會在 repo 的「每日爬蟲通知」Issue 留言當天摘要（新增待審核數、各來源結果、
+需要人工檢視的項目、新文章清單與「前往審核」連結），並 @ repo 擁有者，GitHub 便會寄 Email
+到擁有者註冊 GitHub 的信箱；爬蟲失敗時則留言失敗通知。
+
+- 第一次執行時自動建立這則 Issue，之後每天都在同一則留言，信件會串成同一個對話。
+- 請保持這則 Issue 開啟；關閉的話，下一次執行會再開一則新的。
+- 收不到信時，到 GitHub 右上角頭像 → Settings → Notifications，確認「Participating, @mentions
+  and custom」有勾選 Email。
+- 想改 @ 其他帳號，可在 workflow 設定環境變數 `NOTIFY_MENTION`。
 
 ## 審核的兩種方式
 

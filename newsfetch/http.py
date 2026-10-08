@@ -10,6 +10,7 @@ from . import config
 
 # 失敗原因分類（寫入執行報告）
 HTTP_ERROR = "HTTP 錯誤"
+NOT_FOUND = "文章已下架（404）"
 BLOCKED = "反爬蟲擋下"
 TIMEOUT = "逾時"
 NETWORK = "連線失敗"
@@ -65,6 +66,8 @@ class PoliteSession:
             resp.ok and any(m in resp.text[:5000] for m in BLOCK_MARKERS)
         ):
             raise FetchError(BLOCKED, f"HTTP {resp.status_code}", url)
+        if resp.status_code in (404, 410):
+            raise FetchError(NOT_FOUND, f"HTTP {resp.status_code}", url)
         if not resp.ok:
             raise FetchError(HTTP_ERROR, f"HTTP {resp.status_code}", url)
         if not resp.encoding or resp.encoding.lower() == "iso-8859-1":

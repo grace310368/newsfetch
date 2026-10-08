@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS keyword_rules (
 
 CREATE TABLE IF NOT EXISTS crawl_seen (
     url TEXT PRIMARY KEY,
-    status TEXT NOT NULL,             -- 'out_of_window' / 'fetch_failed'
+    status TEXT NOT NULL,             -- 'out_of_window' / 'fetch_failed' / 'gone'（404 已下架）
     attempts INTEGER DEFAULT 0,
     last_error TEXT,
     first_seen TEXT,
