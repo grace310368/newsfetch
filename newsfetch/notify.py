@@ -1,11 +1,7 @@
-"""每日爬蟲完成後的通知：在 repo 的「每日爬蟲通知」Issue 留言，由 GitHub 寄 Email 給 repo 擁有者。
+"""每日通知：在「每日爬蟲通知」Issue 留言摘要並 @ repo 擁有者，由 GitHub 寄 Email。
 
-不需要任何帳號密碼：GitHub Actions 內建的 GITHUB_TOKEN 就能留言，
-而留言中會 @ repo 擁有者，GitHub 會依其通知設定寄到註冊信箱。
-整個專案只維持一則開啟中的通知 Issue（以標籤 ISSUE_LABEL 辨識），每天新增一則留言。
-
-需要的環境變數（GitHub Actions 會自動提供）：GITHUB_TOKEN、GITHUB_REPOSITORY；
-選填 NOTIFY_MENTION（要 @ 的帳號，預設為 repo 擁有者）。
+- 環境變數：GITHUB_TOKEN、GITHUB_REPOSITORY（Actions 自動提供）；NOTIFY_MENTION（選填）
+- 只維持一則開啟中的 Issue（以 ISSUE_LABEL 辨識），每天新增一則留言
 """
 from __future__ import annotations
 
