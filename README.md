@@ -25,6 +25,7 @@ newsfetch/            Python 套件
   llm_reports.py      月度重點報告、趨勢報告（Claude API）
   export.py           輸出前端 JSON
 run_daily.py          每日排程入口
+notify.py             爬蟲完成後寄送 Email 通知
 apply_review.py       批次套用審核結果（GitHub Pages 模式）
 generate_reports.py   月度／趨勢報告
 serve.py              本地審核伺服器
@@ -54,6 +55,23 @@ logs/                 每日執行報告 YYYY-MM-DD-report.md／.json
 
 三個 workflow 共用同一個 concurrency group，依序寫入資料庫，不會互相衝突。
 GitHub 的 cron 可能延遲數分鐘到數十分鐘，屬正常現象；爬蟲預設回溯 2 天（`NEWSFETCH_LOOKBACK_DAYS`）以容忍延遲。
+
+## Email 通知
+
+每日爬蟲跑完會寄一封摘要信：新增幾則待審核、各來源成功／失敗、需要人工檢視的項目、新文章清單，
+以及「前往審核」按鈕；爬蟲失敗時則寄出失敗通知。在 Settings → Secrets and variables → Actions
+新增以下 Secrets 即可啟用（沒設定時會自動略過，不影響爬蟲）：
+
+| Secret | 說明 | Gmail 範例 |
+|---|---|---|
+| `SMTP_HOST` | 寄信伺服器 | `smtp.gmail.com` |
+| `SMTP_PORT` | 587（STARTTLS）或 465（SSL），不填預設 587 | `587` |
+| `SMTP_USER` | 寄件帳號 | `xxx@gmail.com` |
+| `SMTP_PASSWORD` | 密碼；Gmail 需使用「應用程式密碼」 | 16 碼應用程式密碼 |
+| `MAIL_TO` | 收件人，多位以逗號分隔 | `you@example.com` |
+| `MAIL_FROM` | 寄件人（選填，預設同 `SMTP_USER`） | |
+
+Gmail 應用程式密碼：Google 帳戶 → 安全性 → 開啟兩步驟驗證 → 搜尋「應用程式密碼」建立一組。
 
 ## 審核的兩種方式
 

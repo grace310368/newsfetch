@@ -34,6 +34,7 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: 執行爬蟲
+        id: crawl
         env:
           TERMS: ${{ github.event.inputs.terms }}
         run: |
@@ -45,3 +46,21 @@ jobs:
 
       - name: Commit 資料與執行報告
         run: bash scripts/commit_data.sh "每日爬蟲 $(TZ=Asia/Taipei date +%F)"
+
+      # 爬蟲成功或失敗都寄出通知；未設定 SMTP 相關 Secrets 時自動略過
+      - name: Email 通知
+        if: always()
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          CRAWL_OUTCOME: ${{ steps.crawl.outcome }}
+        run: |
+          if [ "$CRAWL_OUTCOME" = "success" ]; then
+            python notify.py
+          else
+            python notify.py --status failure
+          fi
