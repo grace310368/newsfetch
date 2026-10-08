@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: write
+  issues: write   # 在通知 Issue 留言
 
 # 與審核套用、報告生成共用同一組，避免同時寫入資料庫造成 push 衝突
 concurrency:
@@ -47,16 +48,11 @@ jobs:
       - name: Commit 資料與執行報告
         run: bash scripts/commit_data.sh "每日爬蟲 $(TZ=Asia/Taipei date +%F)"
 
-      # 爬蟲成功或失敗都寄出通知；未設定 SMTP 相關 Secrets 時自動略過
-      - name: Email 通知
+      # 爬蟲成功或失敗都在「每日爬蟲通知」Issue 留言並 @ repo 擁有者，GitHub 會寄 Email 通知
+      - name: 通知
         if: always()
         env:
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
-          SMTP_USER: ${{ secrets.SMTP_USER }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          MAIL_FROM: ${{ secrets.MAIL_FROM }}
-          MAIL_TO: ${{ secrets.MAIL_TO }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CRAWL_OUTCOME: ${{ steps.crawl.outcome }}
         run: |
           if [ "$CRAWL_OUTCOME" = "success" ]; then

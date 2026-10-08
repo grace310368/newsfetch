@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""每日爬蟲完成後寄送 Email 通知（GitHub Actions 在爬蟲之後呼叫）。
+"""每日爬蟲完成後通知（GitHub Actions 在爬蟲之後呼叫）。
 
-    python notify.py                       # 依今天的執行報告寄出摘要
+在 repo 的「每日爬蟲通知」Issue 留言當日摘要並 @ repo 擁有者，GitHub 會寄 Email 通知。
+    python notify.py                       # 依今天的執行報告留言摘要
     python notify.py --date 2026-10-08
-    python notify.py --status failure      # 爬蟲失敗時寄出失敗通知
-SMTP 設定見 newsfetch/notify.py；未設定時直接略過，不會讓 workflow 失敗。
-寄信本身失敗（帳密錯誤等）時結束碼為 1，會在 Actions 上顯示紅色，方便發現設定問題。
+    python notify.py --status failure      # 爬蟲失敗時留言失敗通知
+本機執行（沒有 GITHUB_TOKEN）時直接略過。
 """
 from __future__ import annotations
 
 import argparse
-import smtplib
 import sys
+import urllib.error
 
 from newsfetch import db
 from newsfetch.notify import notify_run
@@ -24,8 +24,8 @@ def main(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
     try:
         notify_run(args.date or db.today(), args.status)
-    except (smtplib.SMTPException, OSError) as e:
-        print(f"Email 寄送失敗：{e}", file=sys.stderr)
+    except (urllib.error.URLError, OSError) as e:
+        print(f"通知失敗：{e}", file=sys.stderr)
         return 1
     return 0
 
