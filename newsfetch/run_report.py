@@ -40,7 +40,7 @@ def render_markdown(r: RunResult, learning: dict | None = None) -> str:
     lines += [f"- 開始：{r.started_at}", f"- 結束：{r.finished_at}",
               f"- 新增待審核：**{len(r.new_pending)}** 則", f"- 自動收錄（自動模式議題）：{len(r.auto_added)} 則",
               f"- 已收錄過（重複）：{r.duplicates}", f"- 發布日期超出回溯範圍（{config.LOOKBACK_DAYS} 天）：{r.out_of_window}",
-              f"- 先前已判定略過：{r.skipped_seen}", f"- 失敗：**{len(r.failures)}** 筆", ""]
+              f"- 文章已下架（404，不再重抓）：{r.gone}", f"- 先前已判定略過：{r.skipped_seen}", f"- 失敗：**{len(r.failures)}** 筆", ""]
 
     lines += ["## 需要人工檢視", ""]
     lines += [f"- 【注意】{n}" for n in r.needs_attention] or ["- 無"]

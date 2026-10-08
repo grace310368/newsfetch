@@ -10,7 +10,7 @@ from datetime import date, timedelta
 from . import config, review, rules
 from .db import now_iso, url_exists
 from .extract import fetch_article
-from .http import EMPTY_FIELDS, FetchError, PoliteSession
+from .http import EMPTY_FIELDS, NOT_FOUND, FetchError, PoliteSession
 from . import sources as source_modules
 from .sources import ctee, udn
 
@@ -34,6 +34,7 @@ class RunResult:
     auto_added: list[dict] = field(default_factory=list)
     duplicates: int = 0
     out_of_window: int = 0
+    gone: int = 0                      # 搜尋結果仍列著、但文章已下架（404），不算失敗
     skipped_seen: int = 0
     failures: list[dict] = field(default_factory=list)  # {category, url|term, source, message}
     needs_attention: list[str] = field(default_factory=list)
@@ -52,7 +53,7 @@ def _seen_skip(conn: sqlite3.Connection, url: str) -> bool:
     row = conn.execute("SELECT status, attempts FROM crawl_seen WHERE url = ?", (url,)).fetchone()
     if not row:
         return False
-    return row["status"] == "out_of_window" or row["attempts"] >= config.MAX_FETCH_ATTEMPTS
+    return row["status"] in ("out_of_window", "gone") or row["attempts"] >= config.MAX_FETCH_ATTEMPTS
 
 
 def _mark_seen(conn: sqlite3.Connection, url: str, status: str, error: str | None = None) -> None:
@@ -121,6 +122,10 @@ def run_crawl(conn: sqlite3.Connection, run_date: str, session: PoliteSession | 
         try:
             article = fetch_article(url, session)
         except FetchError as e:
+            if e.category == NOT_FOUND:
+                _mark_seen(conn, url, "gone", str(e))
+                result.gone += 1
+                continue
             _mark_seen(conn, url, "fetch_failed", str(e))
             result.failures.append({"category": e.category, "source": source_name,
                                     "target": url, "message": str(e)})
