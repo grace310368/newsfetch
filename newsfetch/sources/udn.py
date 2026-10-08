@@ -1,12 +1,4 @@
-"""經濟日報（money.udn.com / udn.com）。
-
-udn 反爬蟲較嚴，依序嘗試多種策略，任一策略取得連結即停止：
-1. 經濟日報搜尋頁 HTML（只取搜尋結果區塊）
-2. udn 站內搜尋 JSON API（聯合新聞網，結果含 udn.com/news/story）
-3. 經濟日報 RSS（抓最新文章，再以關鍵字比對標題／描述）
-4. Bing 新聞 RSS（查詢「{關鍵字} 經濟日報」）
-每一種策略的失敗原因都會回報給執行報告，方便之後調整。
-"""
+"""經濟日報：搜尋頁 → udn 搜尋 API → RSS → Bing 新聞 RSS，取得連結即停止。"""
 from __future__ import annotations
 
 import re

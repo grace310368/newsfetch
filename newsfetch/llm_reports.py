@@ -1,8 +1,7 @@
-"""月度重點報告與趨勢報告（Claude API，批次排程觸發，不在使用者瀏覽時呼叫）。
+"""月度重點報告與趨勢報告（Claude API，批次排程觸發）。
 
-成本控制：
-- 月度報告：只送「標題＋150 字摘要」，依子分類分三組，一次呼叫產出三段
-- 趨勢報告：只送已濃縮的月度報告文字，不重新讀原始新聞
+- 月度：送「標題＋摘要」，依子分類分三組，一次呼叫產出三段
+- 趨勢：只送月度報告文字，不讀原始新聞
 """
 from __future__ import annotations
 
@@ -18,10 +17,13 @@ from .db import now_iso
 MODEL = os.environ.get("NEWSFETCH_CLAUDE_MODEL", "claude-opus-5")
 NO_NEWS = "本月無相關新聞"
 
-SYSTEM = (
-    "你是台灣金融政策研究助理，協助彙整金管會「金融卓越發展計畫」相關新聞。"
-    "請使用道地的繁體中文，語氣中性、聚焦政策推進脈絡，不要加入新聞以外的臆測。"
-)
+SYSTEM = """# 角色
+台灣金融政策研究助理，彙整金管會「金融卓越發展計畫」相關新聞。
+
+# 限制
+- 使用道地繁體中文
+- 語氣中性，聚焦政策推進脈絡
+- 只根據提供的內容，不臆測"""
 
 
 class MonthlyReport(BaseModel):
@@ -33,7 +35,7 @@ class MonthlyReport(BaseModel):
 class TrendStage(BaseModel):
     period_label: str = Field(description="時間標籤，如「2025 Q1」「2025 Q4－2026 Q1」")
     primary_subcategory: str = Field(description="政策與法規／商品與業務／同業動態 三選一")
-    stage_description: str = Field(description="該階段的整合敘事描述，約 60-100 字")
+    stage_description: str = Field(description="該階段的整合敘述，約 60–100 字")
 
 
 class TrendReport(BaseModel):
@@ -86,7 +88,7 @@ def month_articles(conn: sqlite3.Connection, topic: str, year_month: str) -> dic
 
 
 def build_monthly_prompt(topic: str, year_month: str, groups: dict[str, list]) -> str:
-    parts = [f"議題：{topic}", f"月份：{year_month}", ""]
+    parts = [f"議題：{topic}", f"月份：{year_month}", "", "# 本月新聞（依子分類分組）"]
     for sub in config.SUBCATEGORY_NAMES:
         parts.append(f"【{sub}】")
         items = groups.get(sub) or []
@@ -95,11 +97,13 @@ def build_monthly_prompt(topic: str, year_month: str, groups: dict[str, list]) -
         for r in items:
             parts.append(f"- {r['published_date']} {r['title']}：{r['summary'] or ''}")
         parts.append("")
-    parts.append(
-        "請根據以上依三個類別分組的新聞標題與摘要，分別為政策與法規、商品與業務、同業動態三個類別"
-        "各寫一段 60-80 字的重點摘要，說明該類別本月討論了什麼、有無明顯轉折；"
-        f"若某類別當月沒有新聞，該段落請填『{NO_NEWS}』。"
-    )
+    parts += [
+        "# 任務",
+        "依上方三個類別，各寫一段重點摘要：",
+        "- 長度：每段 60–80 字",
+        "- 內容：本月討論了什麼、有無明顯轉折",
+        f"- 該類別無新聞時，填「{NO_NEWS}」",
+    ]
     return "\n".join(parts)
 
 
@@ -142,17 +146,20 @@ def previous_month(today: date | None = None) -> str:
 # ---------------------------------------------------------------------------
 
 def build_trend_prompt(topic: str, reports: list[sqlite3.Row]) -> str:
-    parts = [f"議題：{topic}", "以下為按時間排序的月度重點摘要：", ""]
+    parts = [f"議題：{topic}", "", "# 月度重點摘要（依時間排序）"]
     for r in reports:
         parts.append(f"■ {r['year_month']}（{r['article_count']} 則新聞）")
         parts.append(f"  [政策與法規] {r['policy_report']}")
         parts.append(f"  [商品與業務] {r['product_report']}")
         parts.append(f"  [同業動態] {r['peer_report']}")
-    parts += ["",
-              "請根據以上按時間排序的月度摘要，整理出幾個階段性的敘事演變描述，說明這個議題的討論方向"
-              "如何隨時間推進，語氣中性、聚焦政策推進脈絡，非條列式新聞回顧；每個階段請額外標注一個主要"
-              "子分類（政策與法規／商品與業務／同業動態三選一），代表這個階段的變化主要落在哪個面向。"
-              "階段數量以 2–5 個為宜，依時間由舊到新排列，period_label 使用「YYYY Qn」或「YYYY Qn－YYYY Qn」格式。"]
+    parts += [
+        "",
+        "# 任務",
+        "將上方月度摘要整理成階段性的敘事演變，說明議題討論方向如何隨時間推進：",
+        "- 階段數：2–5 個，由舊到新排列",
+        "- 每階段：整合敘述（非條列新聞回顧）＋一個主要子分類（政策與法規／商品與業務／同業動態）",
+        "- period_label 格式：`YYYY Qn` 或 `YYYY Qn－YYYY Qn`",
+    ]
     return "\n".join(parts)
 
 

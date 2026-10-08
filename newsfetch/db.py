@@ -1,16 +1,4 @@
-"""SQLite 連線與 schema。
-
-schema 依需求文件設計；額外增加的欄位／表：
-- pending_review.published_time / articles.published_time：HH:MM，前端清單顯示時間用（可為 null）
-- pending_review.delete_reason：整篇刪除時的原因，供之後檢討規則庫
-- crawl_seen：已看過但未收錄的 URL（例如發布日期超出回溯範圍、抓取失敗次數），
-  避免每天重複抓取同一批舊文章
-- topic_review_mode：各議題為人工審核或自動分類模式（本階段預設全部人工審核）
-- keyword_rules：關鍵字學習結果（採用的新關鍵字、忽略的建議、停用的誤觸關鍵字），
-  與 config.py 的基礎詞庫合併後生效
-- pending_review.search_term：爬蟲是用哪個搜尋關鍵字找到這篇（評估各關鍵字成效）
-- pending_review_suggestions.matched_terms：這組議題建議命中的規則關鍵字（評估誤觸率）
-"""
+"""SQLite 連線、schema 與欄位遷移。各表用途見 claude_code_brief.md「資料表」。"""
 from __future__ import annotations
 
 import sqlite3

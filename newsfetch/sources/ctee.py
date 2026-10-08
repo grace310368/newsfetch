@@ -1,10 +1,6 @@
-"""工商時報（ctee.com.tw）。
+"""工商時報：站內搜尋頁 → Bing 新聞 RSS。
 
-實測（2026-09）：站內搜尋頁、頻道列表、RSS、sitemap 都會被 Cloudflare WAF 以 HTTP 403 擋下，
-但單篇文章頁可以正常讀取。因此依序嘗試：
-1. 站內搜尋頁 https://www.ctee.com.tw/search/{關鍵字}（若執行環境的 IP 未被擋，這是最完整的來源）
-2. Bing 新聞 RSS（查詢「{關鍵字} 工商時報」，取出工商時報原始網址）
-取得網址後，單篇解析一律交給 extract.fetch_article。
+站內搜尋、RSS、sitemap 會被 Cloudflare 擋（403），單篇文章頁可讀。
 """
 from __future__ import annotations
 
