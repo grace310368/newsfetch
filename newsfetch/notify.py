@@ -1,6 +1,7 @@
 """每日通知：在「每日爬蟲通知」Issue 留言摘要並 @ repo 擁有者，由 GitHub 寄 Email。
 
-- 環境變數：GITHUB_TOKEN、GITHUB_REPOSITORY（Actions 自動提供）；NOTIFY_MENTION（選填）
+- 環境變數：GITHUB_TOKEN、GITHUB_REPOSITORY、GITHUB_EVENT_NAME（Actions 自動提供）；
+  NOTIFY_SCHEDULED_TIME（排定時間 HH:MM，用於計算延遲）、NOTIFY_MENTION（選填）
 - 只維持一則開啟中的 Issue（以 ISSUE_LABEL 辨識），每天新增一則留言
 """
 from __future__ import annotations
@@ -11,6 +12,7 @@ import urllib.error
 import urllib.request
 from urllib.parse import quote
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 
 from . import config
@@ -65,13 +67,46 @@ def _footer(links: Links) -> list[str]:
     return ["", "　｜　".join(parts)] if parts else []
 
 
-def build_success(report: dict, pending_total: int, suggestions: int, links: Links) -> str:
+def _span(seconds: float, minutes_only: bool = False) -> str:
+    seconds = int(round(seconds))
+    h, rem = divmod(seconds, 3600)
+    m, s = divmod(rem, 60)
+    if h:
+        return f"{h} 小時 {m} 分"
+    if minutes_only:
+        return f"{m} 分"
+    return f"{m} 分 {s} 秒" if m else f"{s} 秒"
+
+
+def timing_line(report: dict, event: str = "", scheduled: str = "") -> str:
+    """例：執行時間 13:41～13:44（耗時 3 分 9 秒，比排定時間晚 5 小時 41 分）。
+
+    event 為 GitHub 觸發來源（schedule／workflow_dispatch）；scheduled 為排定時間 HH:MM（台灣時間）。
+    """
+    try:
+        start = datetime.strptime(report["started_at"], "%Y-%m-%dT%H:%M:%S%z")
+        end = datetime.strptime(report["finished_at"], "%Y-%m-%dT%H:%M:%S%z")
+    except (KeyError, ValueError):
+        return ""
+    note = f"耗時 {_span((end - start).total_seconds())}"
+    if event == "schedule" and scheduled:
+        planned = datetime.strptime(f"{report['run_date']} {scheduled}{start.strftime('%z')}", "%Y-%m-%d %H:%M%z")
+        late = (start - planned).total_seconds()
+        note += f"，比排定時間晚 {_span(late, minutes_only=True)}" if late >= 120 else "，準時執行"
+    elif event:
+        note += "，手動執行"
+    return f"執行時間 {start:%H:%M}～{end:%H:%M}（{note}）"
+
+
+def build_success(report: dict, pending_total: int, suggestions: int, links: Links, timing: str = "") -> str:
     new = report.get("new_pending", [])
     failures = report.get("failures", [])
     attention = report.get("needs_attention", [])
     date = report["run_date"]
 
     lines = [f"### {_mmdd(date)} 新增 {len(new)} 則待審核" + ("（有項目需要檢視）" if attention else ""), ""]
+    if timing:
+        lines.append(f"- {timing}")
     lines.append(f"- 目前共 **{pending_total}** 則待處理；自動收錄 {len(report.get('auto_added', []))} 則；失敗 {len(failures)} 筆")
     sources: dict[str, list[dict]] = {}
     for t in report.get("terms", []):
@@ -176,4 +211,6 @@ def notify_run(run_date: str, status: str = "success", log_dir: Path | None = No
         return post(build_failure(run_date, links), env, gh)
     pending_total = len(_load_json(export_dir / "pending.json", []))
     suggestions = len(_load_json(export_dir / "keywords.json", {}).get("suggestions", []))
-    return post(build_success(report, pending_total, suggestions, links), env, gh)
+    env_ = env if env is not None else os.environ
+    timing = timing_line(report, env_.get("GITHUB_EVENT_NAME", ""), env_.get("NOTIFY_SCHEDULED_TIME", ""))
+    return post(build_success(report, pending_total, suggestions, links, timing), env, gh)

@@ -86,7 +86,7 @@
 | `reports.yml` | 每月 1 日、每季 2 日 | 月度／趨勢報告 |
 
 - 三者共用 concurrency group，依序寫入資料庫。
-- 通知：在「每日爬蟲通知」Issue 留言摘要並 @ repo 擁有者，由 GitHub 寄 Email；失敗時留言失敗通知。
+- 通知：在「每日爬蟲通知」Issue 留言摘要（含執行時間、耗時、比排定時間的延遲）並 @ repo 擁有者，由 GitHub 寄 Email；失敗時留言失敗通知。
 
 ## 執行報告與除錯
 - 每次執行產生 `logs/YYYY-MM-DD-report.md`（與 `.json`），包含：
