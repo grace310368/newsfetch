@@ -58,3 +58,15 @@
 {"at": "2026-10-12T12:10:44+0800", "op": {"type": "manual_add", "url": "https://www.ctee.com.tw/news/20261008700115-430303", "topics": ["三軌金融"]}, "ok": true, "status": "added", "id": 66, "title": "VASP入金融總會 聚焦穩定幣", "source": "工商時報", "published_date": "2026-10-08"}
 {"at": "2026-10-12T12:10:44+0800", "op": {"type": "manual_add", "url": "https://www.ctee.com.tw/news/20261008700106-430301", "topics": ["國際級資本市場"]}, "ok": true, "status": "added", "id": 67, "title": "私募市場 面臨兩大挑戰", "source": "工商時報", "published_date": "2026-10-08"}
 {"at": "2026-10-12T12:10:44+0800", "op": {"type": "manual_add", "url": "https://www.ctee.com.tw/news/20261009700149-430301", "topics": ["亞洲資產管理中心"]}, "ok": true, "status": "added", "id": 68, "title": "11銀行家辦業務准全台開辦", "source": "工商時報", "published_date": "2026-10-09"}
+{"at": "2026-10-12T14:10:34+0800", "op": {"type": "delete", "id": 69, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T14:10:34+0800", "op": {"type": "finalize", "id": 63, "items": [{"topic": "全齡金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T14:10:34+0800", "op": {"type": "finalize", "id": 64, "items": [{"topic": "國際級資本市場", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T14:10:34+0800", "op": {"type": "finalize", "id": 65, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-12T14:10:34+0800", "op": {"type": "finalize", "id": 66, "items": [{"topic": "三軌金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T14:10:34+0800", "op": {"type": "finalize", "id": 67, "items": [{"topic": "國際級資本市場", "subcategory": "商品與業務"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T14:10:34+0800", "op": {"type": "finalize", "id": 68, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T14:10:34+0800", "op": {"type": "delete", "id": 70, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T14:10:34+0800", "op": {"type": "delete", "id": 71, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T14:10:34+0800", "op": {"type": "delete", "id": 72, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T14:10:34+0800", "op": {"type": "finalize", "id": 73, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-12T14:10:34+0800", "op": {"type": "finalize", "id": 74, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
