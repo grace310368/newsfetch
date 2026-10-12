@@ -23,3 +23,28 @@
 {"at": "2026-10-12T10:00:13+0800", "op": {"type": "finalize", "id": 31, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
 {"at": "2026-10-12T10:00:13+0800", "op": {"type": "finalize", "id": 32, "items": [{"topic": "全齡金融", "subcategory": "商品與業務"}, {"topic": "金融大回饋", "subcategory": "商品與業務"}]}, "ok": true, "status": "edited"}
 {"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 33, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 34, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 35, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "finalize", "id": 36, "items": [{"topic": "三軌金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 37, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "finalize", "id": 38, "items": [{"topic": "全齡金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "finalize", "id": 39, "items": [{"topic": "全齡金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 40, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 41, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "finalize", "id": 42, "items": [{"topic": "全齡金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "finalize", "id": 43, "items": [{"topic": "全齡金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 44, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "finalize", "id": 45, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "finalize", "id": 46, "items": [{"topic": "亞洲資產管理中心", "subcategory": "商品與業務"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 47, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "finalize", "id": 48, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 49, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 50, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 51, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 52, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 53, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "finalize", "id": 54, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "finalize", "id": 55, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 56, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 58, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 57, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
