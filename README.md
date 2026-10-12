@@ -44,6 +44,7 @@
 
 ## 通知
 - 每日爬蟲完成後在「每日爬蟲通知」Issue 留言摘要並 @ repo 擁有者，GitHub 會寄 Email；失敗時留言失敗通知。
+- 摘要第一行為執行時間、耗時與比排定時間晚多久；改排程時間時，請同步修改 `daily-crawl.yml` 的 `NOTIFY_SCHEDULED_TIME`。
 - 這則 Issue 請保持開啟；關閉後下次執行會自動再開一則。
 - 收不到信：GitHub 頭像 → Settings → Notifications，勾選「Participating, @mentions and custom」的 Email。
 - 改 @ 對象：設定環境變數 `NOTIFY_MENTION`。

@@ -94,3 +94,24 @@ def test_custom_mention_and_skip_without_token(dirs):
     notify.notify_run("2026-10-08", "success", *dirs, env={**ENV, "NOTIFY_MENTION": "someone"}, gh=gh)
     assert gh.comments()[0][1].endswith("@someone")
     assert notify.notify_run("2026-10-08", "success", *dirs, env={}) is False
+
+
+def test_timing_line():
+    r = {"run_date": "2026-10-12", "started_at": "2026-10-12T13:41:36+0800", "finished_at": "2026-10-12T13:44:45+0800"}
+    assert notify.timing_line(r, "schedule", "08:00") == "執行時間 13:41～13:44（耗時 3 分 9 秒，比排定時間晚 5 小時 41 分）"
+    on_time = {**r, "started_at": "2026-10-12T08:01:00+0800", "finished_at": "2026-10-12T08:04:30+0800"}
+    assert notify.timing_line(on_time, "schedule", "08:00") == "執行時間 08:01～08:04（耗時 3 分 30 秒，準時執行）"
+    late_min = {**r, "started_at": "2026-10-12T08:41:00+0800", "finished_at": "2026-10-12T08:41:50+0800"}
+    assert notify.timing_line(late_min, "schedule", "08:00").endswith("（耗時 50 秒，比排定時間晚 41 分）")
+    assert notify.timing_line(r, "workflow_dispatch", "08:00").endswith("（耗時 3 分 9 秒，手動執行）")
+    assert notify.timing_line({"run_date": "2026-10-12"}, "schedule", "08:00") == ""
+
+
+def test_timing_in_comment(dirs):
+    gh = FakeGitHub(open_issues=[{"number": 3}])
+    env = {**ENV, "GITHUB_EVENT_NAME": "schedule", "NOTIFY_SCHEDULED_TIME": "08:00"}
+    report = {**REPORT, "started_at": "2026-10-08T13:41:36+0800", "finished_at": "2026-10-08T13:44:45+0800"}
+    (dirs[0] / "2026-10-08-report.json").write_text(json.dumps(report, ensure_ascii=False), encoding="utf-8")
+    notify.notify_run("2026-10-08", "success", *dirs, env=env, gh=gh)
+    body = gh.comments()[0][1]
+    assert body.splitlines()[2] == "- 執行時間 13:41～13:44（耗時 3 分 9 秒，比排定時間晚 5 小時 41 分）"

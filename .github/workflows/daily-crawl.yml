@@ -54,6 +54,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CRAWL_OUTCOME: ${{ steps.crawl.outcome }}
+          NOTIFY_SCHEDULED_TIME: "08:00"   # 與上方 cron 對應的台灣時間，用於計算延遲
         run: |
           if [ "$CRAWL_OUTCOME" = "success" ]; then
             python notify.py
