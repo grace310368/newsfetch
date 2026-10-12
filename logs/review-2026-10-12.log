@@ -1,0 +1,25 @@
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 9, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 10, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 11, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 12, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 13, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "finalize", "id": 14, "items": [{"topic": "三軌金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "finalize", "id": 15, "items": [{"topic": "三軌金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "finalize", "id": 16, "items": [{"topic": "全齡金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 17, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 18, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 19, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "finalize", "id": 20, "items": [{"topic": "亞洲資產管理中心", "subcategory": "商品與業務"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 21, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 22, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 23, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 24, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 25, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 26, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 27, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 28, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "finalize", "id": 29, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "finalize", "id": 30, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "finalize", "id": 31, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "finalize", "id": 32, "items": [{"topic": "全齡金融", "subcategory": "商品與業務"}, {"topic": "金融大回饋", "subcategory": "商品與業務"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-12T10:00:13+0800", "op": {"type": "delete", "id": 33, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
