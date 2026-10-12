@@ -48,3 +48,7 @@
 {"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 56, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 58, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-10-12T10:16:30+0800", "op": {"type": "delete", "id": 57, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:27:00+0800", "op": {"type": "finalize", "id": 59, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-12T10:27:00+0800", "op": {"type": "delete", "id": 60, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-12T10:27:00+0800", "op": {"type": "finalize", "id": 61, "items": [{"topic": "三軌金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-12T10:27:00+0800", "op": {"type": "finalize", "id": 62, "items": [{"topic": "三軌金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
