@@ -1,0 +1,1136 @@
+{
+  "run_date": "2026-10-23",
+  "started_at": "2026-10-23T12:30:25+0800",
+  "finished_at": "2026-10-23T12:34:52+0800",
+  "terms": [
+    {
+      "source": "工商時報",
+      "term": "亞洲資產管理中心",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "工商時報搜尋頁失敗：[反爬蟲擋下] HTTP 403",
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "亞資中心",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "國際級資本市場",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "三軌金融",
+      "found": 1,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "全齡金融",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "信任金融",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "金融大回饋",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "金融卓越發展計畫",
+      "found": 1,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "高雄資產管理專區",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "高雄亞洲新灣區",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "台南專區",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "OBU",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "OSU",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "OIU",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "OAMU",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "境外資產管理平臺",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "TISA",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "個人投資儲蓄投資帳戶",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "資產管理規模",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "亞洲創新籌資平台",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "台灣週",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "私人銀行",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "家族辦公室",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "五大開放政策",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "退休第三支柱",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "少子化",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "高齡化",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "普惠金融",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "銀髮金融",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "長照金融",
+      "found": 1,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "社會信任",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "金融共好",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "社會負債",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "社會信任資產負債表",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "永續金融",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "公司治理",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "ESG金融",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "彭金隆",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "童政彰",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "金管會",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "銀行局",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "工商時報",
+      "term": "金融發展與亞資中心策進會",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "由「Bing 新聞搜尋」取得連結"
+      ]
+    },
+    {
+      "source": "經濟日報",
+      "term": "亞洲資產管理中心",
+      "found": 19,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "亞資中心",
+      "found": 18,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "國際級資本市場",
+      "found": 1,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "三軌金融",
+      "found": 5,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "全齡金融",
+      "found": 18,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "信任金融",
+      "found": 18,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "金融大回饋",
+      "found": 20,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "金融卓越發展計畫",
+      "found": 1,
+      "error": null,
+      "notes": [
+        "經濟日報搜尋頁失敗：[文章已下架（404）] HTTP 404",
+        "由「udn 搜尋 API」取得連結"
+      ]
+    },
+    {
+      "source": "經濟日報",
+      "term": "高雄資產管理專區",
+      "found": 18,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "高雄亞洲新灣區",
+      "found": 18,
+      "error": null,
+      "notes": [
+        "經濟日報搜尋頁失敗：[文章已下架（404）] HTTP 404",
+        "由「udn 搜尋 API」取得連結"
+      ]
+    },
+    {
+      "source": "經濟日報",
+      "term": "台南專區",
+      "found": 3,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "OBU",
+      "found": 9,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "OSU",
+      "found": 4,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "OIU",
+      "found": 11,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "OAMU",
+      "found": 8,
+      "error": null,
+      "notes": [
+        "經濟日報搜尋頁失敗：[文章已下架（404）] HTTP 404",
+        "由「udn 搜尋 API」取得連結"
+      ]
+    },
+    {
+      "source": "經濟日報",
+      "term": "境外資產管理平臺",
+      "found": 1,
+      "error": null,
+      "notes": [
+        "經濟日報搜尋頁失敗：[文章已下架（404）] HTTP 404",
+        "由「udn 搜尋 API」取得連結"
+      ]
+    },
+    {
+      "source": "經濟日報",
+      "term": "TISA",
+      "found": 20,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "個人投資儲蓄投資帳戶",
+      "found": 1,
+      "error": null,
+      "notes": [
+        "經濟日報搜尋頁失敗：[文章已下架（404）] HTTP 404",
+        "由「udn 搜尋 API」取得連結"
+      ]
+    },
+    {
+      "source": "經濟日報",
+      "term": "資產管理規模",
+      "found": 19,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "亞洲創新籌資平台",
+      "found": 11,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "台灣週",
+      "found": 7,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "私人銀行",
+      "found": 20,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "家族辦公室",
+      "found": 20,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "五大開放政策",
+      "found": 0,
+      "error": null,
+      "notes": [
+        "經濟日報搜尋頁失敗：[文章已下架（404）] HTTP 404",
+        "udn 搜尋 API無結果",
+        "經濟日報 RSS無結果",
+        "Bing 新聞搜尋無結果"
+      ]
+    },
+    {
+      "source": "經濟日報",
+      "term": "退休第三支柱",
+      "found": 3,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "少子化",
+      "found": 20,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "高齡化",
+      "found": 20,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "普惠金融",
+      "found": 20,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "銀髮金融",
+      "found": 5,
+      "error": null,
+      "notes": [
+        "經濟日報搜尋頁失敗：[文章已下架（404）] HTTP 404",
+        "由「udn 搜尋 API」取得連結"
+      ]
+    },
+    {
+      "source": "經濟日報",
+      "term": "長照金融",
+      "found": 2,
+      "error": null,
+      "notes": [
+        "經濟日報搜尋頁失敗：[文章已下架（404）] HTTP 404",
+        "由「udn 搜尋 API」取得連結"
+      ]
+    },
+    {
+      "source": "經濟日報",
+      "term": "社會信任",
+      "found": 10,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "金融共好",
+      "found": 16,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "社會負債",
+      "found": 1,
+      "error": null,
+      "notes": [
+        "經濟日報搜尋頁失敗：[文章已下架（404）] HTTP 404",
+        "由「udn 搜尋 API」取得連結"
+      ]
+    },
+    {
+      "source": "經濟日報",
+      "term": "社會信任資產負債表",
+      "found": 1,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "永續金融",
+      "found": 20,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "公司治理",
+      "found": 20,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "ESG金融",
+      "found": 9,
+      "error": null,
+      "notes": [
+        "經濟日報搜尋頁失敗：[文章已下架（404）] HTTP 404",
+        "由「udn 搜尋 API」取得連結"
+      ]
+    },
+    {
+      "source": "經濟日報",
+      "term": "彭金隆",
+      "found": 20,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "童政彰",
+      "found": 5,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "金管會",
+      "found": 20,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "銀行局",
+      "found": 15,
+      "error": null,
+      "notes": []
+    },
+    {
+      "source": "經濟日報",
+      "term": "金融發展與亞資中心策進會",
+      "found": 3,
+      "error": null,
+      "notes": [
+        "經濟日報搜尋頁失敗：[文章已下架（404）] HTTP 404",
+        "由「udn 搜尋 API」取得連結"
+      ]
+    }
+  ],
+  "new_pending": [
+    {
+      "url": "https://www.ctee.com.tw/news/20261023700065-439901",
+      "title": "發展TISA助陣亞資中心 稅制是關鍵",
+      "source": "工商時報",
+      "date": "2026-10-23",
+      "term": "亞洲資產管理中心",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "政策與法規",
+          "reason": "命中關鍵字「亞資中心」「TISA」（標籤）；子分類依據「金管會」「政策」"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ctee.com.tw/news/20261022701792-430301",
+      "title": "亞資中心再跨大步！金管會：TISA每人每年2.4萬元免稅 拚2028年報稅適用",
+      "source": "工商時報",
+      "date": "2026-10-22",
+      "term": "亞資中心",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "政策與法規",
+          "reason": "命中關鍵字「亞資中心」「TISA」（標籤）；子分類依據「金管會」"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ctee.com.tw/news/20261023700067-439901",
+      "title": "強化退休第三支柱！卓揆：速擬TISA第二階段優惠",
+      "source": "工商時報",
+      "date": "2026-10-23",
+      "term": "TISA",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "政策與法規",
+          "reason": "命中關鍵字「亞洲資產管理中心」「TISA」（標籤）；子分類依據「修法」"
+        },
+        {
+          "topic": "全齡金融",
+          "subcategory": "政策與法規",
+          "reason": "命中關鍵字「退休第三支柱」（標題）；子分類依據「修法」"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ctee.com.tw/news/20261023700073-430301",
+      "title": "打造資產管理國家隊！公股投信四合一 各金控持股比揭曉、近100檔基金何去何從？",
+      "source": "工商時報",
+      "date": "2026-10-23",
+      "term": "資產管理規模",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "政策與法規",
+          "reason": "命中關鍵字「資產管理規模」（摘要）；子分類依據「金管會」"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ctee.com.tw/news/20261023700076-439901",
+      "title": "擴大規模只是起點…國家隊經營綜效成關鍵",
+      "source": "工商時報",
+      "date": "2026-10-23",
+      "term": "資產管理規模",
+      "suggestions": []
+    },
+    {
+      "url": "https://www.ctee.com.tw/news/20261022701878-430201",
+      "title": "《電週邊》宏碁子公司安圖斯攜智菩、環球睿視 加速企業級AI場景落地",
+      "source": "工商時報",
+      "date": "2026-10-22",
+      "term": "台灣週",
+      "suggestions": []
+    },
+    {
+      "url": "https://www.ctee.com.tw/news/20261022701686-431201",
+      "title": "新安東京海上產險金融友善獲肯定 年度囊括四大獎",
+      "source": "工商時報",
+      "date": "2026-10-22",
+      "term": "金融共好",
+      "suggestions": []
+    },
+    {
+      "url": "https://www.ctee.com.tw/news/20261023700556-431201",
+      "title": "富邦證券落實創新與永續再獲「2026財訊金融獎」雙獎肯定",
+      "source": "工商時報",
+      "date": "2026-10-23",
+      "term": "永續金融",
+      "suggestions": [
+        {
+          "topic": "信任金融",
+          "subcategory": "同業動態",
+          "reason": "命中關鍵字「永續金融」（標籤）；子分類依據「金控」"
+        }
+      ]
+    },
+    {
+      "url": "https://www.ctee.com.tw/news/20261022701557-430304",
+      "title": "王道銀積極深耕數位金融創新 獲工商時報「數位金融獎」六大獎",
+      "source": "工商時報",
+      "date": "2026-10-22",
+      "term": "永續金融",
+      "suggestions": []
+    },
+    {
+      "url": "https://www.ctee.com.tw/news/20261022701087-430201",
+      "title": "《通網股》中華電AI再下一城！新公司今揭牌、三大領域成布局重點",
+      "source": "工商時報",
+      "date": "2026-10-22",
+      "term": "公司治理",
+      "suggestions": []
+    },
+    {
+      "url": "https://www.ctee.com.tw/news/20261022702251-430303",
+      "title": "全球近七成網站驚傳PHP重大漏洞！金管會動員防護：台灣金融業影響低於全球",
+      "source": "工商時報",
+      "date": "2026-10-22",
+      "term": "金管會",
+      "suggestions": []
+    },
+    {
+      "url": "https://money.udn.com/money/story/6710/9832473",
+      "title": "TISA 2.0省稅 優惠非免費午餐 留意三限制",
+      "source": "經濟日報",
+      "date": "2026-10-23",
+      "term": "TISA",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "商品與業務",
+          "reason": "命中關鍵字「TISA」（標題）；子分類依據「申購」「基金」「帳戶」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/5607/9832483",
+      "title": "TISA 2.0省稅 投信：有助大盤長期向上",
+      "source": "經濟日報",
+      "date": "2026-10-23",
+      "term": "TISA",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "商品與業務",
+          "reason": "命中關鍵字「TISA」（標題）；子分類依據「帳戶」"
+        },
+        {
+          "topic": "國際級資本市場",
+          "subcategory": "商品與業務",
+          "reason": "命中關鍵字「ETF」（標籤）；子分類依據「帳戶」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/7307/9832466",
+      "title": "TISA 租稅優惠政院上菜 每年提撥至帳戶金額 可扣除最高 2.4 萬元所得額",
+      "source": "經濟日報",
+      "date": "2026-10-23",
+      "term": "TISA",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "商品與業務",
+          "reason": "命中關鍵字「TISA」（標題）；子分類依據「帳戶」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/5613/9832213",
+      "title": "TISA 減稅非免費午餐！藏3大限制 金管會：提前領恐課稅",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "TISA",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "政策與法規",
+          "reason": "命中關鍵字「TISA」（標題）；子分類依據「金管會」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/5612/9832202",
+      "title": "TISA租稅優惠跨大步　投信公會：完善退休保障第3支柱",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "TISA",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "政策與法規",
+          "reason": "命中關鍵字「TISA」（標題）；子分類依據「金管會」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/5612/9832160",
+      "title": "金管會推TISA租稅優惠　拚年底前預告修法2028報稅適用",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "TISA",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "政策與法規",
+          "reason": "命中關鍵字「TISA」（標題）；子分類依據「金管會」「修法」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/7307/9831814",
+      "title": "行政院加速研擬 TISA 2.0租稅優惠 投信投顧公會將推動優化商品與服務",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "TISA",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "商品與業務",
+          "reason": "命中關鍵字「TISA」（標題）；子分類依據「商品」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/5618/9831510",
+      "title": "金管會宣布TISA租稅優惠 三種情況之下每年2.4萬免稅不追溯",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "TISA",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "政策與法規",
+          "reason": "命中關鍵字「TISA」（標題）；子分類依據「金管會」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/7307/9831007",
+      "title": "政院拍板TISA租稅優惠2.0 每年最高享2.4萬元免稅額",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "TISA",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "商品與業務",
+          "reason": "命中關鍵字「TISA」（標題）；子分類依據「帳戶」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/7307/9831083",
+      "title": "TISA推2.4萬免稅額優惠　金管會拚後年報稅適用",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "TISA",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "政策與法規",
+          "reason": "命中關鍵字「TISA」（標題）；子分類依據「金管會」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/7307/9830820",
+      "title": "政院拍板TISA租稅優惠 每年享2.4萬元免稅額",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "TISA",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "政策與法規",
+          "reason": "命中關鍵字「TISA」（標題）；子分類依據「金管會」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/5613/9832441",
+      "title": "玉山永續金融 連13年奪金",
+      "source": "經濟日報",
+      "date": "2026-10-23",
+      "term": "永續金融",
+      "suggestions": [
+        {
+          "topic": "信任金融",
+          "subcategory": "同業動態",
+          "reason": "命中關鍵字「永續金融」（標題）；子分類依據「金控」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/5636/9831649",
+      "title": "富邦證券勇奪2026財訊金融獎雙獎　AI創新與永續金融實力再獲肯定",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "永續金融",
+      "suggestions": [
+        {
+          "topic": "信任金融",
+          "subcategory": "同業動態",
+          "reason": "命中關鍵字「永續金融」（標題）；子分類依據「金控」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/5613/9832294",
+      "title": "颱風薔琵來襲　金管會促保險業加強服務依約儘速理賠",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "金管會",
+      "suggestions": []
+    },
+    {
+      "url": "https://money.udn.com/money/story/5613/9832239",
+      "title": "公股投信四合一 金管會審查聚焦三大重點",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "金管會",
+      "suggestions": []
+    },
+    {
+      "url": "https://money.udn.com/money/story/5612/9832216",
+      "title": "金管會核准永豐金證券合併京城證　市占率維持第4名",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "金管會",
+      "suggestions": []
+    },
+    {
+      "url": "https://money.udn.com/money/story/122328/9832168",
+      "title": "試辦「高溫保險」反應良好 賴總統請金管會、環境部研議擴至全台",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "金管會",
+      "suggestions": []
+    },
+    {
+      "url": "https://money.udn.com/money/story/5612/9832147",
+      "title": "PHP爆資安漏洞　金管會掃描金融機構啟動3因應措施",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "金管會",
+      "suggestions": []
+    },
+    {
+      "url": "https://money.udn.com/money/story/5612/9832144",
+      "title": "颱風假與股市脫鉤？　金管會：持續蒐集意見",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "金管會",
+      "suggestions": []
+    },
+    {
+      "url": "https://money.udn.com/money/story/5613/9832023",
+      "title": "全球網站爆重大資安漏洞！金管會急掃金融業 揪出高風險系統",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "金管會",
+      "suggestions": []
+    },
+    {
+      "url": "https://money.udn.com/money/story/5612/9831951",
+      "title": "公股投信四合一 金管會審查盯3重點",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "金管會",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "同業動態",
+          "reason": "命中關鍵字「資產管理規模」（摘要）；子分類依據「金控」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/7307/9831873",
+      "title": "金管會核准永豐金證券合併京城證券",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "金管會",
+      "suggestions": []
+    },
+    {
+      "url": "https://money.udn.com/money/story/7307/9830888",
+      "title": "TISA1.0、2.0雙軌並行 金管會拚租稅優惠2028年報稅上路",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "金管會",
+      "suggestions": [
+        {
+          "topic": "亞洲資產管理中心",
+          "subcategory": "政策與法規",
+          "reason": "命中關鍵字「TISA」（摘要）；子分類依據「金管會」「修法」"
+        }
+      ]
+    },
+    {
+      "url": "https://money.udn.com/money/story/7307/9831737",
+      "title": "公股投信四合一 首站將拚10月底之前送件銀行局",
+      "source": "經濟日報",
+      "date": "2026-10-22",
+      "term": "銀行局",
+      "suggestions": []
+    }
+  ],
+  "auto_added": [],
+  "duplicates": 84,
+  "out_of_window": 1,
+  "gone": 0,
+  "skipped_seen": 378,
+  "failures": [],
+  "needs_attention": [
+    "工商時報「工商時報搜尋頁」被反爬蟲擋下（[反爬蟲擋下] HTTP 403），本次執行改用其他備援策略"
+  ]
+}
