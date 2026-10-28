@@ -14,3 +14,8 @@
 {"at": "2026-10-28T08:28:47+0800", "op": {"type": "delete", "id": 326, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-10-28T08:28:47+0800", "op": {"type": "delete", "id": 325, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-10-28T08:28:47+0800", "op": {"type": "delete", "id": 324, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T14:33:32+0800", "op": {"type": "delete", "id": 350, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T14:33:32+0800", "op": {"type": "delete", "id": 349, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T14:33:32+0800", "op": {"type": "delete", "id": 348, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T14:33:32+0800", "op": {"type": "delete", "id": 347, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T14:33:32+0800", "op": {"type": "delete", "id": 346, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
