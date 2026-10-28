@@ -37,3 +37,6 @@
 {"at": "2026-10-28T15:38:09+0800", "op": {"type": "delete", "id": 330, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-10-28T15:38:09+0800", "op": {"type": "delete", "id": 329, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-10-28T15:38:09+0800", "op": {"type": "finalize", "id": 331, "items": [{"topic": "國際級資本市場", "subcategory": "商品與業務"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-28T15:48:19+0800", "op": {"type": "delete", "id": 323, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T15:48:19+0800", "op": {"type": "delete", "id": 321, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T15:48:19+0800", "op": {"type": "delete", "id": 322, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
