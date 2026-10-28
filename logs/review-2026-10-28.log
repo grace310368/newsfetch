@@ -11,3 +11,6 @@
 {"at": "2026-10-28T08:23:09+0800", "op": {"type": "finalize", "id": 83, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
 {"at": "2026-10-28T08:23:09+0800", "op": {"type": "finalize", "id": 84, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
 {"at": "2026-10-28T08:23:09+0800", "op": {"type": "finalize", "id": 85, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-28T08:28:47+0800", "op": {"type": "delete", "id": 326, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T08:28:47+0800", "op": {"type": "delete", "id": 325, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T08:28:47+0800", "op": {"type": "delete", "id": 324, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
