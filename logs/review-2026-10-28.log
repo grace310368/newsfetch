@@ -1,2 +1,13 @@
 {"at": "2026-10-28T08:15:08+0800", "op": {"type": "finalize", "id": 328, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "approved"}
 {"at": "2026-10-28T08:15:08+0800", "op": {"type": "finalize", "id": 327, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-28T08:23:09+0800", "op": {"type": "finalize", "id": 75, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-28T08:23:09+0800", "op": {"type": "finalize", "id": 76, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-28T08:23:09+0800", "op": {"type": "finalize", "id": 77, "items": [{"topic": "全齡金融", "subcategory": "商品與業務"}, {"topic": "信任金融", "subcategory": "商品與業務"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-28T08:23:09+0800", "op": {"type": "finalize", "id": 78, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-28T08:23:09+0800", "op": {"type": "finalize", "id": 79, "items": [{"topic": "亞洲資產管理中心", "subcategory": "商品與業務"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-28T08:23:09+0800", "op": {"type": "delete", "id": 80, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T08:23:09+0800", "op": {"type": "delete", "id": 81, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T08:23:09+0800", "op": {"type": "delete", "id": 82, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T08:23:09+0800", "op": {"type": "finalize", "id": 83, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-28T08:23:09+0800", "op": {"type": "finalize", "id": 84, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-28T08:23:09+0800", "op": {"type": "finalize", "id": 85, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
