@@ -20,3 +20,13 @@
 {"at": "2026-10-28T14:33:32+0800", "op": {"type": "delete", "id": 347, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-10-28T14:33:32+0800", "op": {"type": "delete", "id": 346, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-10-28T15:20:02+0800", "op": {"type": "manual_add", "url": "https://www.ctee.com.tw/news/20261012701862-430301", "topics": ["亞洲資產管理中心"]}, "ok": false, "error": "這則新聞已經收錄"}
+{"at": "2026-10-28T15:29:47+0800", "op": {"type": "delete", "id": 343, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T15:29:47+0800", "op": {"type": "delete", "id": 344, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T15:29:47+0800", "op": {"type": "delete", "id": 345, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T15:29:47+0800", "op": {"type": "delete", "id": 342, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T15:29:47+0800", "op": {"type": "delete", "id": 340, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T15:29:47+0800", "op": {"type": "delete", "id": 341, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T15:29:47+0800", "op": {"type": "delete", "id": 339, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T15:29:47+0800", "op": {"type": "delete", "id": 338, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T15:29:47+0800", "op": {"type": "delete", "id": 337, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-28T15:29:47+0800", "op": {"type": "delete", "id": 336, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
