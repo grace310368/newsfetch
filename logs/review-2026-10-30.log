@@ -49,3 +49,21 @@
 {"at": "2026-10-30T11:35:33+0800", "op": {"type": "finalize", "id": 310, "items": [{"topic": "亞洲資產管理中心", "subcategory": "商品與業務"}]}, "ok": true, "status": "edited"}
 {"at": "2026-10-30T11:35:33+0800", "op": {"type": "finalize", "id": 312, "items": [{"topic": "國際級資本市場", "subcategory": "商品與業務"}]}, "ok": true, "status": "edited"}
 {"at": "2026-10-30T11:35:33+0800", "op": {"type": "finalize", "id": 311, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "delete", "id": 86, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "delete", "id": 87, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "finalize", "id": 88, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "delete", "id": 89, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "delete", "id": 90, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "finalize", "id": 91, "items": [{"topic": "國際級資本市場", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "delete", "id": 92, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "finalize", "id": 93, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "finalize", "id": 94, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "delete", "id": 95, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "delete", "id": 98, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "delete", "id": 99, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "delete", "id": 96, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "delete", "id": 97, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "finalize", "id": 103, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "finalize", "id": 102, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "delete", "id": 101, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:44:23+0800", "op": {"type": "delete", "id": 100, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
