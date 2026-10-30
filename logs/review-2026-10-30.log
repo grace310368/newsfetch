@@ -1,0 +1,10 @@
+{"at": "2026-10-30T11:04:39+0800", "op": {"type": "delete", "id": 319, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:04:39+0800", "op": {"type": "delete", "id": 365, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:04:39+0800", "op": {"type": "delete", "id": 366, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:04:39+0800", "op": {"type": "delete", "id": 367, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:04:39+0800", "op": {"type": "finalize", "id": 368, "items": [{"topic": "金融大回饋", "subcategory": "同業動態"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-30T11:04:39+0800", "op": {"type": "delete", "id": 369, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:04:39+0800", "op": {"type": "delete", "id": 361, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:04:39+0800", "op": {"type": "delete", "id": 362, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:04:39+0800", "op": {"type": "delete", "id": 363, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:04:39+0800", "op": {"type": "delete", "id": 364, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
