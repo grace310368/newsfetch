@@ -42,3 +42,10 @@
 {"at": "2026-10-30T11:21:55+0800", "op": {"type": "finalize", "id": 314, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "approved"}
 {"at": "2026-10-30T11:21:55+0800", "op": {"type": "finalize", "id": 316, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "edited"}
 {"at": "2026-10-30T11:21:55+0800", "op": {"type": "finalize", "id": 313, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-30T11:35:33+0800", "op": {"type": "delete", "id": 318, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:35:33+0800", "op": {"type": "delete", "id": 317, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:35:33+0800", "op": {"type": "finalize", "id": 308, "items": [{"topic": "亞洲資產管理中心", "subcategory": "商品與業務"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-30T11:35:33+0800", "op": {"type": "finalize", "id": 309, "items": [{"topic": "亞洲資產管理中心", "subcategory": "商品與業務"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-30T11:35:33+0800", "op": {"type": "finalize", "id": 310, "items": [{"topic": "亞洲資產管理中心", "subcategory": "商品與業務"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-30T11:35:33+0800", "op": {"type": "finalize", "id": 312, "items": [{"topic": "國際級資本市場", "subcategory": "商品與業務"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-30T11:35:33+0800", "op": {"type": "finalize", "id": 311, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
