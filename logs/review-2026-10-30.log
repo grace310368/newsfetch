@@ -14,3 +14,22 @@
 {"at": "2026-10-30T11:08:37+0800", "op": {"type": "delete", "id": 358, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-10-30T11:08:37+0800", "op": {"type": "delete", "id": 359, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-10-30T11:08:37+0800", "op": {"type": "delete", "id": 360, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "topic", "topic": "全齡金融", "term": "健康福祉事業", "evidence": "5 篇「全齡金融」文章含此詞，其中 4 篇現行規則沒判斷到；含此詞的文章 100% 屬於此議題"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "topic", "topic": "三軌金融", "term": "虛擬資產", "evidence": "5 篇「三軌金融」文章含此詞，其中 5 篇現行規則沒判斷到；含此詞的文章 83% 屬於此議題"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "topic", "topic": "全齡金融", "term": "長照", "evidence": "4 篇「全齡金融」文章含此詞，其中 3 篇現行規則沒判斷到；含此詞的文章 100% 屬於此議題"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "topic", "topic": "三軌金融", "term": "VASP", "evidence": "4 篇「三軌金融」文章含此詞，其中 4 篇現行規則沒判斷到；含此詞的文章 80% 屬於此議題"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "topic", "topic": "三軌金融", "term": "穩定幣", "evidence": "3 篇「三軌金融」文章含此詞，其中 3 篇現行規則沒判斷到；含此詞的文章 100% 屬於此議題"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "seed", "topic": "", "term": "保險業", "evidence": "出現在 1 篇爬蟲漏抓（手動新增）的文章；共 8 篇相關文章含此詞、3 篇被刪除的雜訊"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "topic", "topic": "全齡金融", "term": "健康事業", "evidence": "4 篇「全齡金融」文章含此詞，其中 3 篇現行規則沒判斷到；含此詞的文章 80% 屬於此議題"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "seed", "topic": "", "term": "健康福祉事業", "evidence": "出現在 1 篇爬蟲漏抓（手動新增）的文章；共 5 篇相關文章含此詞"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "seed", "topic": "", "term": "穩定幣", "evidence": "出現在 1 篇爬蟲漏抓（手動新增）的文章；共 3 篇相關文章含此詞"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "seed", "topic": "", "term": "長照", "evidence": "出現在 1 篇爬蟲漏抓（手動新增）的文章；共 4 篇相關文章含此詞"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "seed", "topic": "", "term": "虛擬資產", "evidence": "出現在 1 篇爬蟲漏抓（手動新增）的文章；共 5 篇相關文章含此詞、1 篇被刪除的雜訊"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "seed", "topic": "", "term": "VASP", "evidence": "出現在 1 篇爬蟲漏抓（手動新增）的文章；共 4 篇相關文章含此詞、1 篇被刪除的雜訊"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "seed", "topic": "", "term": "健康事業", "evidence": "出現在 1 篇爬蟲漏抓（手動新增）的文章；共 4 篇相關文章含此詞、1 篇被刪除的雜訊"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "disable", "kind": "topic", "topic": "全齡金融", "term": "普惠金融", "evidence": "命中「全齡金融」8 次，其中 7 次被移除或整篇刪除（誤觸率 88%）"}, "ok": true, "status": "disabled"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "disable", "kind": "seed", "topic": "", "term": "台灣週", "evidence": "此搜尋關鍵字找到的 6 篇已審核文章中，6 篇被整篇刪除"}, "ok": true, "status": "disabled"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "disable", "kind": "topic", "topic": "信任金融", "term": "永續金融", "evidence": "命中「信任金融」5 次，其中 5 次被移除或整篇刪除（誤觸率 100%）"}, "ok": true, "status": "disabled"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "disable", "kind": "topic", "topic": "全齡金融", "term": "少子化", "evidence": "命中「全齡金融」4 次，其中 4 次被移除或整篇刪除（誤觸率 100%）"}, "ok": true, "status": "disabled"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "seed", "topic": "", "term": "私募", "evidence": "出現在 1 篇爬蟲漏抓（手動新增）的文章；共 2 篇相關文章含此詞、1 篇被刪除的雜訊"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "seed", "topic": "", "term": "私募股權", "evidence": "出現在 1 篇爬蟲漏抓（手動新增）的文章；共 2 篇相關文章含此詞、1 篇被刪除的雜訊"}, "ok": true, "status": "active"}
