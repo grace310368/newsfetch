@@ -8,3 +8,9 @@
 {"at": "2026-10-30T11:04:39+0800", "op": {"type": "delete", "id": 362, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-10-30T11:04:39+0800", "op": {"type": "delete", "id": 363, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-10-30T11:04:39+0800", "op": {"type": "delete", "id": 364, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:08:37+0800", "op": {"type": "finalize", "id": 356, "items": [{"topic": "國際級資本市場", "subcategory": "商品與業務"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-30T11:08:37+0800", "op": {"type": "finalize", "id": 355, "items": [{"topic": "國際級資本市場", "subcategory": "商品與業務"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-30T11:08:37+0800", "op": {"type": "delete", "id": 357, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:08:37+0800", "op": {"type": "delete", "id": 358, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:08:37+0800", "op": {"type": "delete", "id": 359, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:08:37+0800", "op": {"type": "delete", "id": 360, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
