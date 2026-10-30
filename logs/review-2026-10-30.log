@@ -33,3 +33,12 @@
 {"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "disable", "kind": "topic", "topic": "全齡金融", "term": "少子化", "evidence": "命中「全齡金融」4 次，其中 4 次被移除或整篇刪除（誤觸率 100%）"}, "ok": true, "status": "disabled"}
 {"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "seed", "topic": "", "term": "私募", "evidence": "出現在 1 篇爬蟲漏抓（手動新增）的文章；共 2 篇相關文章含此詞、1 篇被刪除的雜訊"}, "ok": true, "status": "active"}
 {"at": "2026-10-30T11:10:44+0800", "op": {"type": "keyword", "action": "adopt", "kind": "seed", "topic": "", "term": "私募股權", "evidence": "出現在 1 篇爬蟲漏抓（手動新增）的文章；共 2 篇相關文章含此詞、1 篇被刪除的雜訊"}, "ok": true, "status": "active"}
+{"at": "2026-10-30T11:21:55+0800", "op": {"type": "delete", "id": 320, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:21:55+0800", "op": {"type": "delete", "id": 351, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:21:55+0800", "op": {"type": "delete", "id": 352, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:21:55+0800", "op": {"type": "delete", "id": 353, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:21:55+0800", "op": {"type": "delete", "id": 354, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-10-30T11:21:55+0800", "op": {"type": "finalize", "id": 315, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-30T11:21:55+0800", "op": {"type": "finalize", "id": 314, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "approved"}
+{"at": "2026-10-30T11:21:55+0800", "op": {"type": "finalize", "id": 316, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "edited"}
+{"at": "2026-10-30T11:21:55+0800", "op": {"type": "finalize", "id": 313, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "edited"}
