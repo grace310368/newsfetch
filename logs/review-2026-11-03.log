@@ -33,3 +33,12 @@
 {"at": "2026-11-03T10:00:39+0800", "op": {"type": "delete", "id": 398, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-11-03T10:00:39+0800", "op": {"type": "delete", "id": 397, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-11-03T10:00:39+0800", "op": {"type": "delete", "id": 395, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T10:11:45+0800", "op": {"type": "delete", "id": 384, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T10:11:45+0800", "op": {"type": "delete", "id": 381, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T10:11:45+0800", "op": {"type": "finalize", "id": 380, "items": [{"topic": "三軌金融", "subcategory": "同業動態"}]}, "ok": true, "status": "approved"}
+{"at": "2026-11-03T10:11:45+0800", "op": {"type": "keyword", "action": "disable", "kind": "seed", "topic": "", "term": "公司治理", "evidence": "此搜尋關鍵字找到的 5 篇已審核文章中，5 篇被整篇刪除"}, "ok": true, "status": "disabled"}
+{"at": "2026-11-03T10:11:45+0800", "op": {"type": "keyword", "action": "disable", "kind": "seed", "topic": "", "term": "高齡化", "evidence": "此搜尋關鍵字找到的 5 篇已審核文章中，5 篇被整篇刪除"}, "ok": true, "status": "disabled"}
+{"at": "2026-11-03T10:11:45+0800", "op": {"type": "keyword", "action": "disable", "kind": "seed", "topic": "", "term": "永續金融", "evidence": "此搜尋關鍵字找到的 6 篇已審核文章中，5 篇被整篇刪除"}, "ok": true, "status": "disabled"}
+{"at": "2026-11-03T10:11:45+0800", "op": {"type": "keyword", "action": "disable", "kind": "topic", "topic": "信任金融", "term": "公司治理", "evidence": "命中「信任金融」3 次，其中 3 次被移除或整篇刪除（誤觸率 100%）"}, "ok": true, "status": "disabled"}
+{"at": "2026-11-03T10:11:45+0800", "op": {"type": "delete", "id": 108, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T10:11:45+0800", "op": {"type": "delete", "id": 107, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
