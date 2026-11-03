@@ -14,3 +14,7 @@
 {"at": "2026-11-03T09:33:01+0800", "op": {"type": "delete", "id": 425, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-11-03T09:33:01+0800", "op": {"type": "delete", "id": 424, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-11-03T09:33:01+0800", "op": {"type": "delete", "id": 423, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T09:36:02+0800", "op": {"type": "delete", "id": 422, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T09:36:02+0800", "op": {"type": "delete", "id": 415, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T09:36:02+0800", "op": {"type": "delete", "id": 412, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T09:36:02+0800", "op": {"type": "delete", "id": 411, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
