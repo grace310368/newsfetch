@@ -1,0 +1,7 @@
+{"at": "2026-11-03T09:21:14+0800", "op": {"type": "delete", "id": 421, "reason": "關鍵字誤觸，與議題無關"}, "ok": false, "error": "文章 #421 已審核過（deleted）"}
+{"at": "2026-11-03T09:21:14+0800", "op": {"type": "delete", "id": 420, "reason": "關鍵字誤觸，與議題無關"}, "ok": false, "error": "文章 #420 已審核過（deleted）"}
+{"at": "2026-11-03T09:21:14+0800", "op": {"type": "delete", "id": 419, "reason": "關鍵字誤觸，與議題無關"}, "ok": false, "error": "文章 #419 已審核過（deleted）"}
+{"at": "2026-11-03T09:21:14+0800", "op": {"type": "delete", "id": 418, "reason": "關鍵字誤觸，與議題無關"}, "ok": false, "error": "文章 #418 已審核過（deleted）"}
+{"at": "2026-11-03T09:21:14+0800", "op": {"type": "delete", "id": 434, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T09:21:14+0800", "op": {"type": "delete", "id": 433, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T09:21:14+0800", "op": {"type": "finalize", "id": 432, "items": [{"topic": "亞洲資產管理中心", "subcategory": "商品與業務"}]}, "ok": true, "status": "approved"}
