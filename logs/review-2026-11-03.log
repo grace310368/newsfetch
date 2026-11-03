@@ -5,3 +5,8 @@
 {"at": "2026-11-03T09:21:14+0800", "op": {"type": "delete", "id": 434, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-11-03T09:21:14+0800", "op": {"type": "delete", "id": 433, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-11-03T09:21:14+0800", "op": {"type": "finalize", "id": 432, "items": [{"topic": "亞洲資產管理中心", "subcategory": "商品與業務"}]}, "ok": true, "status": "approved"}
+{"at": "2026-11-03T09:26:43+0800", "op": {"type": "finalize", "id": 431, "items": [{"topic": "信任金融", "subcategory": "商品與業務"}]}, "ok": true, "status": "edited"}
+{"at": "2026-11-03T09:26:43+0800", "op": {"type": "delete", "id": 430, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T09:26:43+0800", "op": {"type": "delete", "id": 429, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T09:26:43+0800", "op": {"type": "delete", "id": 428, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T09:26:43+0800", "op": {"type": "delete", "id": 427, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
