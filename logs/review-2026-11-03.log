@@ -18,3 +18,18 @@
 {"at": "2026-11-03T09:36:02+0800", "op": {"type": "delete", "id": 415, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-11-03T09:36:02+0800", "op": {"type": "delete", "id": 412, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-11-03T09:36:02+0800", "op": {"type": "delete", "id": 411, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "delete", "id": 410, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "delete", "id": 409, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "finalize", "id": 408, "items": [{"topic": "金融大回饋", "subcategory": "政策與法規"}]}, "ok": true, "status": "edited"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "delete", "id": 407, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "finalize", "id": 406, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "edited"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "delete", "id": 405, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "delete", "id": 404, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "finalize", "id": 403, "items": [{"topic": "三軌金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "finalize", "id": 402, "items": [{"topic": "三軌金融", "subcategory": "同業動態"}]}, "ok": true, "status": "approved"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "delete", "id": 401, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "finalize", "id": 400, "items": [{"topic": "三軌金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "delete", "id": 399, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "delete", "id": 398, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "delete", "id": 397, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-03T10:00:39+0800", "op": {"type": "delete", "id": 395, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
