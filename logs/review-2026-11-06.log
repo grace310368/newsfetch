@@ -1,2 +1,4 @@
 {"at": "2026-11-06T09:54:56+0800", "op": {"type": "delete", "id": 529, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-11-06T09:54:56+0800", "op": {"type": "delete", "id": 528, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-06T09:57:35+0800", "op": {"type": "delete", "id": 527, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-06T09:57:35+0800", "op": {"type": "delete", "id": 526, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
