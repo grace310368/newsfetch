@@ -12,3 +12,8 @@
 {"at": "2026-11-06T10:38:03+0800", "op": {"type": "finalize", "id": 518, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
 {"at": "2026-11-06T10:38:03+0800", "op": {"type": "delete", "id": 517, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-11-06T10:38:03+0800", "op": {"type": "delete", "id": 516, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-06T10:49:24+0800", "op": {"type": "delete", "id": 515, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-06T10:49:24+0800", "op": {"type": "delete", "id": 514, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-06T10:49:24+0800", "op": {"type": "delete", "id": 513, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-06T10:49:24+0800", "op": {"type": "delete", "id": 511, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-06T10:49:24+0800", "op": {"type": "finalize", "id": 512, "items": [{"topic": "亞洲資產管理中心", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
