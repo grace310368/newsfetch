@@ -2,3 +2,5 @@
 {"at": "2026-11-06T09:54:56+0800", "op": {"type": "delete", "id": 528, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-11-06T09:57:35+0800", "op": {"type": "delete", "id": 527, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
 {"at": "2026-11-06T09:57:35+0800", "op": {"type": "delete", "id": 526, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-06T10:15:58+0800", "op": {"type": "delete", "id": 525, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-06T10:15:58+0800", "op": {"type": "finalize", "id": 524, "items": [{"topic": "三軌金融", "subcategory": "政策與法規"}]}, "ok": true, "status": "approved"}
