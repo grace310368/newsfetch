@@ -1,0 +1,11 @@
+{"at": "2026-11-10T14:59:06+0800", "op": {"type": "delete", "id": 596, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-10T14:59:06+0800", "op": {"type": "delete", "id": 595, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-10T14:59:06+0800", "op": {"type": "delete", "id": 594, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-10T14:59:06+0800", "op": {"type": "delete", "id": 593, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-10T14:59:06+0800", "op": {"type": "delete", "id": 592, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-10T14:59:06+0800", "op": {"type": "delete", "id": 591, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-10T14:59:06+0800", "op": {"type": "delete", "id": 590, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-10T14:59:06+0800", "op": {"type": "finalize", "id": 589, "items": [{"topic": "亞洲資產管理中心", "subcategory": "同業動態"}]}, "ok": true, "status": "edited"}
+{"at": "2026-11-10T14:59:06+0800", "op": {"type": "delete", "id": 588, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-10T14:59:06+0800", "op": {"type": "delete", "id": 586, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
+{"at": "2026-11-10T14:59:06+0800", "op": {"type": "delete", "id": 585, "reason": "關鍵字誤觸，與議題無關"}, "ok": true, "status": "deleted"}
